@@ -4,8 +4,9 @@ public class Member {
 	
 	private String memId;
 	private String memPw;
-	private String memMail;
-	private int memPurcNum;
+	private String memAddress;
+	private String memName;
+	private String memPhoneNum;
 	
 	public String getMemId() {
 		return memId;
@@ -19,16 +20,23 @@ public class Member {
 	public void setMemPw(String memPw) {
 		this.memPw = memPw;
 	}
-	public String getMemMail() {
-		return memMail;
+	public String getMemAddress() {
+		return memAddress;
 	}
-	public void setMemMail(String memMail) {
-		this.memMail = memMail;
+	public void setMemAddress(String memAddress) {
+		this.memAddress = memAddress;
 	}
-	public int getMemPurcNum() {
-		return memPurcNum;
+	public String getMemName() {
+		return memName;
 	}
-	public void setMemPurcNum(int memPurcNum) {
-		this.memPurcNum = memPurcNum;
+	public void setMemName(String memName) {
+		this.memName = memName;
 	}
+	public String getMemPhoneNum() {
+		return memPhoneNum;
+	}
+	public void setMemPhoneNum(String memPhoneNum) {
+		this.memPhoneNum = memPhoneNum;
+	}
+	
 }
