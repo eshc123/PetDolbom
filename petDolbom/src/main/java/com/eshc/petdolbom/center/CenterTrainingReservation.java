@@ -1,7 +1,5 @@
 package com.eshc.petdolbom.center;
 
-import java.util.ArrayList;
-
 public class CenterTrainingReservation {
 	
 	private int trainIdx;
