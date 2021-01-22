@@ -21,9 +21,9 @@ import com.eshc.petdolbom.member.service.MemberService;
 @RequestMapping("/member")
 public class MemberController {
 //	
-//	@Autowired
-//	MemberService service;
-//	
+	@Autowired
+	MemberService service;
+	
 	@ModelAttribute("cp")
 	public String getContextPath(HttpServletRequest request) {
 		return request.getContextPath();
@@ -43,14 +43,22 @@ public class MemberController {
 //	public String joinForm(Member member) {
 //		return "/member/joinForm";
 //	}
-//	
-//	@RequestMapping(value = "/join", method = RequestMethod.POST)
-//	public String joinReg(Member member) {
-//		
-//		service.createMember(member);
-//		
-//		return "/member/joinOk";
-//	}
+//
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String getMemberRegister(Member member) {
+		
+		//service.createMember(member);
+		
+		return "/member/joinOk";
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String postMemberRegister(Member member) {
+		
+		//service.createMember(member);
+		
+		return "/member/joinOk";
+	}
 //	
 //	// Login
 //	@RequestMapping("/loginForm")
@@ -94,10 +102,10 @@ public class MemberController {
 //		return mav;
 //	}
 //	
-//	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-//	public ModelAndView modify(Member member, HttpServletRequest request) {
-//		
-//		ModelAndView mav = new ModelAndView();
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public ModelAndView getMemberUpdate(Member member, HttpServletRequest request) {
+		
+		ModelAndView mav = new ModelAndView();
 //		HttpSession session = request.getSession();
 //		
 //		Member mem = service.updateMember(member);
@@ -109,9 +117,27 @@ public class MemberController {
 //			mav.addObject("memAft", mem);
 //			mav.setViewName("/member/modifyOk");
 //		}
+		
+		return mav;
+	}
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public ModelAndView postMemberUpdate(Member member, HttpServletRequest request) {
+		
+		ModelAndView mav = new ModelAndView();
+//		HttpSession session = request.getSession();
 //		
-//		return mav;
-//	}
+//		Member mem = service.updateMember(member);
+//		if(mem == null) {
+//			mav.setViewName("/member/modifyForm");
+//		} else { 
+//			session.setAttribute("member", mem);
+//			
+//			mav.addObject("memAft", mem);
+//			mav.setViewName("/member/modifyOk");
+//		}
+		
+		return mav;
+	}
 //	
 //	// Remove
 //	@RequestMapping("/removeForm")
@@ -128,9 +154,9 @@ public class MemberController {
 //		return mav;
 //	}
 //	
-//	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-//	public String memRemove(Member member, HttpServletRequest request) {
-//		
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String postMemberDelete(Member member, HttpServletRequest request) {
+		
 //		int result = service.deleteMember(member);
 //		
 //		if(result == 0)
@@ -138,8 +164,8 @@ public class MemberController {
 //		
 //		HttpSession session = request.getSession();
 //		session.invalidate();
-//		
-//		return "/member/removeOk";
-//	}
-//	
+		
+		return "/member/removeOk";
+	}
+	
 }
