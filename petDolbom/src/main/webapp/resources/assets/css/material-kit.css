@@ -13,6 +13,19 @@
 
  */
 /*     brand Colors              */
+.alert-text {
+  font-family: godik;
+  color: #cccccc;
+  margin-left: 60px;
+  margin-bottom: -10px;
+}
+.alert-text-danger {
+  font-style: italic;
+  font-family: godik;
+  color: #cc9191;
+  margin-left: 60px;
+  margin-bottom: -10px;
+}
 .carousel.carousel-full-navigation .left {
   cursor: url("../../img/arrow-left.png"), url("../../img/arrow-left.cur"), default !important;
 }

@@ -62,65 +62,65 @@ The above copyright notice and this permission notice shall be included in all c
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
+                        <i class="material-icons">perm_identity</i>
+                      </span>
+                    </div>
+                    <input type="text" name="id" id="identifier" class="form-control" required style="font-family: godik;" placeholder="아이디" minlength="4">
+                  </div>
+                  <div class="alert-text-danger" id="id-min"><span>ID 최소 4자</span>
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">lock_outline</i>
+                      </span>
+                    </div>
+                    <input type="password" name="password" id="password" class="form-control"  required  style="font-family: godik;" placeholder="비밀번호" autocomplete="" minlength="8">
+                  </div>
+                  <div class="alert-text-danger" id="pw-min"><span>비밀번호 최소 8자</span>
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">lock_outline</i>
+                      </span>
+                    </div>
+                    <input type="password" name="passwordCheck" id="passwordCheck" class="form-control" required style="font-family: godik;" placeholder="비밀번호 확인" autocomplete=""  minlength="8">
+                  </div>
+                  <div class="alert-text-danger" id="pw-check"><span>비밀번호가 다릅니다.</span>
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
                         <i class="material-icons">face</i>
                       </span>
                     </div>
-                    <input type="text" class="form-control" style="font-family: godik;" placeholder="아이디">
-                  </div>
-                  <!-- <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="material-icons">mail</i>
-                      </span>
-                    </div>
-                    <input type="email" class="form-control" placeholder="Email">
-                  </div> -->
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="material-icons">lock_outline</i>
-                      </span>
-                    </div>
-                    <input type="password" class="form-control"  style="font-family: godik;" placeholder="패스워드" autocomplete="">
+                    <input type="text" name="name" class="form-control" required style="font-family: godik;" placeholder="이름" autocomplete="">
                   </div>
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
-                        <i class="material-icons">lock_outline</i>
+                        <i class="material-icons">phone</i>
                       </span>
                     </div>
-                    <input type="password" class="form-control"  style="font-family: godik;" placeholder="패스워드 확인" autocomplete="">
+                    <input type="text" name="phone" class="form-control" required style="font-family: godik;" placeholder="휴대폰번호" autocomplete="">
                   </div>
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
-                        <i class="material-icons">lock_outline</i>
+                        <i class="material-icons">home</i>
                       </span>
                     </div>
-                    <input type="text" class="form-control"  style="font-family: godik;" placeholder="이름" autocomplete="">
-                  </div>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="material-icons">lock_outline</i>
-                      </span>
-                    </div>
-                    <input type="text" class="form-control"  style="font-family: godik;" placeholder="휴대폰번로" autocomplete="">
-                  </div>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="material-icons">lock_outline</i>
-                      </span>
-                    </div>
-                    <input type="text" class="form-control"  style="font-family: godik;" placeholder="주소" autocomplete="">
+                    <input type="text" name="address" class="form-control" required style="font-family: godik;" placeholder="주소" autocomplete="">
                   </div>
                 </div>
                 <!-- <div class="footer text-center">
                   <a href="javascript:;" class="btn btn-primary btn-link btn-wd btn-lg">Get Started</a>
                 </div> -->
                 <div class="footer text-center" style="margin-top: 40px; margin-bottom: 40px;">
-                <button class="btn btn-primary" type="submit" style="font-family: godik;">로그인</button>
+                <button class="btn btn-primary" id="submit" type="submit" style="font-family: godik; margin-right:20px;">가입</button>
+           		<a href="${cp}/member/login"><button class="btn btn-primary" type=button style="font-family: godik; margin-left:20px;">취소</button></a>
+                
                 </div>
                 
               </form>
@@ -179,6 +179,51 @@ The above copyright notice and this permission notice shall be included in all c
         }, 1000);
       }
     }
+    $(function(){ 
+    	$("#pw-check").hide(); 
+    	$("input").keyup(function(){ 
+    		var pwd1=$("#password").val(); 
+    		var pwd2=$("#passwordCheck").val(); 
+    		if(pwd1 != "" && pwd2 != ""){ 
+    			if(pwd1 == pwd2){ 
+    				$("#pw-check").hide(); 
+    				$("#submit").removeAttr("disabled"); 
+    				}
+    			else{ 
+    				$("#pw-check").show(); 
+    				$("#submit").attr("disabled", "disabled");
+    				} 
+    			} 
+    		}); 
+    	});
+    $(function(){ 
+    	$("#id-min").hide(); 
+    	$("input").keyup(function(){ 
+    		var id=$("#identifier").val();
+    		if(id != ""){
+	    		if(id.length < 4){
+	    			$("#id-min").show();
+	    		}
+	    		else{
+	    			$("#id-min").hide();
+	    		}
+    		}
+    		}); 
+    	});
+    $(function(){ 
+    	$("#pw-min").hide(); 
+    	$("input").keyup(function(){ 
+    		var id=$("#password").val();
+    		if(id != ""){
+	    		if(id.length < 8){
+	    			$("#pw-min").show();
+	    		}
+	    		else{
+	    			$("#pw-min").hide();
+	    		}
+    		}
+    		}); 
+    	});
   </script>
 </body>
 
