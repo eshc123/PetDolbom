@@ -11,18 +11,69 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.eshc.petdolbom.center.service.CenterService;
-import com.eshc.petdolbom.member.Member;
+
 
 @Controller
-@RequestMapping("/dolbom")
+@RequestMapping("/center")
 public class CenterController {
 	
-	@Autowired
-	CenterService service;
+//	@Autowired
+//	CenterService centerService;
 	
 	@ModelAttribute("cp")
 	public String getContextPath(HttpServletRequest request) {
 		return request.getContextPath();
 	}
+	
+	@RequestMapping(value = "/info", method = RequestMethod.GET)
+	public String infoCenter() {
 
+		return "";
+	}
+	
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String detailCenter() {
+
+		return "";
+	}
+	@RequestMapping(value = "/training", method = RequestMethod.GET)
+	public String searchTraining() {
+
+		return "";
+	}
+	@RequestMapping(value = "/training", method = RequestMethod.POST)
+	public String applyTraining() {
+
+		return "";
+	}
+	@RequestMapping(value = "/longPeriod", method = RequestMethod.GET)
+	public String searchLongPeriod() {
+
+		return "";
+	}
+	@RequestMapping(value = "/longPeriod", method = RequestMethod.POST)
+	public String applyLongPeriod() {
+
+		return "";
+	}
+	@RequestMapping(value = "/adminCenterSearch", method = RequestMethod.GET)
+	public String listSearchCenterAdmin() {
+
+		return "";
+	}
+	@RequestMapping(value = "/adminCenterSearch", method = RequestMethod.POST)
+	public String pauseSearchCenterAdmin() {
+
+		return "";
+	}
+	@RequestMapping(value = "/addCenterSearch", method = RequestMethod.GET)
+	public String formAddCenterAdmin() {
+
+		return "";
+	}
+	@RequestMapping(value = "/addCenterSearch", method = RequestMethod.POST)
+	public String submitAddCenterAdmin() {
+
+		return "";
+	}
 }

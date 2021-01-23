@@ -83,31 +83,19 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                     <input type="password" class="form-control"  style="font-family: godik;" placeholder="패스워드" autocomplete="">
                   </div>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="material-icons">lock_outline</i>
-                      </span>
-                    </div>
-                    <input type="password" class="form-control"  style="font-family: godik;" placeholder="패스워드" autocomplete="">
-                  </div>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="material-icons">lock_outline</i>
-                      </span>
-                    </div>
-                    <input type="password" class="form-control"  style="font-family: godik;" placeholder="패스워드" autocomplete="">
-                  </div>
                 </div>
                 <!-- <div class="footer text-center">
                   <a href="javascript:;" class="btn btn-primary btn-link btn-wd btn-lg">Get Started</a>
                 </div> -->
-                <div class="footer text-center" style="margin-top: 20px;">
-                <button class="btn btn-primary" type="submit" style="font-family: godik;">로그인</button>
+                <div class="footer text-center" style="margin-top: 40px; margin-bottom: 40px;">
+               	<button class="btn btn-primary" type="submit" style="font-family: godik; margin-right:20px;">로그인</button>
+           		<a href="${cp}/member/register"><button class="btn btn-primary" type=button style="font-family: godik; margin-left:20px;">회원가입</button></a>
                 </div>
+               	 </form>
+           		
                 
-              </form>
+             
+              
             </div>
           </div>
         </div>

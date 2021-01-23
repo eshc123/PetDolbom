@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,17 +17,60 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.eshc.petdolbom.member.Member;
 import com.eshc.petdolbom.member.service.MemberService;
+import com.eshc.petdolbom.pet.Pet;
 
 @Controller
 @RequestMapping("/member")
 public class MemberController {
 //	
-	@Autowired
-	MemberService service;
+//	@Autowired
+//	@Qualifier("memberService")
+//	MemberService service;
 	
 	@ModelAttribute("cp")
 	public String getContextPath(HttpServletRequest request) {
 		return request.getContextPath();
+	}
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index() {
+		return "/index";
+	}
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String formLogin(Member member, HttpSession session) {
+		
+//		Member mem = service.getMember(member);
+//		if(mem == null) 
+//			return "/member/loginForm";
+//		
+//		session.setAttribute("member", mem);
+		
+		return "/member/login";
+	}
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String submitLogin(Member member, HttpSession session) {
+		
+//		Member mem = service.getMember(member);
+//		if(mem == null) 
+//			return "/member/loginForm";
+//		
+//		session.setAttribute("member", mem);
+		
+		return "/member/login";
+	}
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String formRegister(Member member) {
+		
+		//service.createMember(member);
+		
+		return "/member/register";
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String submitRegister(Member member) {
+		
+		//service.createMember(member);
+		
+		return "/member/joinOk";
 	}
 //	
 //	@ModelAttribute("serverTime")
@@ -44,21 +88,7 @@ public class MemberController {
 //		return "/member/joinForm";
 //	}
 //
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String getMemberRegister(Member member) {
-		
-		//service.createMember(member);
-		
-		return "/member/joinOk";
-	}
-	
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String postMemberRegister(Member member) {
-		
-		//service.createMember(member);
-		
-		return "/member/joinOk";
-	}
+
 //	
 //	// Login
 //	@RequestMapping("/loginForm")
@@ -66,26 +96,16 @@ public class MemberController {
 //		return "/member/loginForm";
 //	}
 //	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String memLogin(Member member, HttpSession session) {
-		
-//		Member mem = service.getMember(member);
-//		if(mem == null) 
-//			return "/member/loginForm";
-//		
-//		session.setAttribute("member", mem);
-		
-		return "/member/main";
-	}
+	
 //	
-//	// Logout
-//	@RequestMapping("/logout")
-//	public String memLogout(Member member, HttpSession session) {
-//		
+	// Logout
+	@RequestMapping("/logout")
+	public String logout(Member member, HttpSession session) {
+		
 //		session.invalidate();
-//		
-//		return "/member/logoutOk";
-//	}
+		
+		return "/member/logoutOk";
+	}
 //	
 //	// Modify
 //	@RequestMapping(value = "/modifyForm")
@@ -103,7 +123,7 @@ public class MemberController {
 //	}
 //	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public ModelAndView getMemberUpdate(Member member, HttpServletRequest request) {
+	public ModelAndView formMemberUpdate(Member member, HttpServletRequest request) {
 		
 		ModelAndView mav = new ModelAndView();
 //		HttpSession session = request.getSession();
@@ -121,7 +141,7 @@ public class MemberController {
 		return mav;
 	}
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public ModelAndView postMemberUpdate(Member member, HttpServletRequest request) {
+	public ModelAndView submitMemberUpdate(Member member, HttpServletRequest request) {
 		
 		ModelAndView mav = new ModelAndView();
 //		HttpSession session = request.getSession();
@@ -154,8 +174,8 @@ public class MemberController {
 //		return mav;
 //	}
 //	
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String postMemberDelete(Member member, HttpServletRequest request) {
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String submitMemberDelete(Member member, HttpServletRequest request) {
 		
 //		int result = service.deleteMember(member);
 //		
@@ -167,5 +187,59 @@ public class MemberController {
 		
 		return "/member/removeOk";
 	}
-	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String formMemberDelete(Member member, HttpServletRequest request) {
+		
+//		int result = service.deleteMember(member);
+//		
+//		if(result == 0)
+//			return "/member/removeForm";
+//		
+//		HttpSession session = request.getSession();
+//		session.invalidate();
+		
+		return "/member/removeOk";
+	}
+	@RequestMapping(value = "/pet", method = RequestMethod.GET)
+	public String infoPet(Member member, HttpServletRequest request) {
+		
+		
+		return "/member/removeOk";
+	}
+	@RequestMapping(value = "/addPet", method = RequestMethod.GET)
+	public String formAddPet(Pet pet, HttpServletRequest request) {
+		
+		
+		return "/member/removeOk";
+	}	
+	@RequestMapping(value = "/addPet", method = RequestMethod.POST)
+	public String submitAddPet(Pet pet, HttpServletRequest request) {
+		
+		
+		return "/member/removeOk";
+	}
+	@RequestMapping(value = "/updatePet", method = RequestMethod.GET)
+	public String formUpdatePet(Pet pet, HttpServletRequest request) {
+		
+		
+		return "/member/removeOk";
+	}	
+	@RequestMapping(value = "/updatePet", method = RequestMethod.POST)
+	public String submitUpdatePet(Pet pet, HttpServletRequest request) {
+		
+		
+		return "/member/removeOk";
+	}
+	@RequestMapping(value = "/adminLogin", method = RequestMethod.GET)
+	public String formAdminLogin(Member member, HttpServletRequest request) {
+		
+		
+		return "/member/removeOk";
+	}
+	@RequestMapping(value = "/adminLogin", method = RequestMethod.POST)
+	public String submitAdminLogin(Member member, HttpServletRequest request) {
+		
+		
+		return "/member/removeOk";
+	}
 }

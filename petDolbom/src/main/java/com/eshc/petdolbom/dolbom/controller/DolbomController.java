@@ -17,8 +17,8 @@ import com.eshc.petdolbom.member.Member;
 @RequestMapping("/dolbom")
 public class DolbomController {
 	
-	@Autowired
-	DolbomService service;
+//	@Autowired
+//	DolbomService dolbomService;
 	
 	@ModelAttribute("cp")
 	public String getContextPath(HttpServletRequest request) {
@@ -60,8 +60,38 @@ public class DolbomController {
 
 		return "";
 	}
-	@RequestMapping(value = "/custom", method = RequestMethod.GET)
-	public String getDetail() {
+	@RequestMapping(value = "/adminDolbomApply", method = RequestMethod.GET)
+	public String FormApplyDolbomAdmin() {
+
+		return "";
+	}
+	@RequestMapping(value = "/adminDolbomApply", method = RequestMethod.POST)
+	public String acceptApplyDolbomAdmin() {
+
+		return "";
+	}
+	@RequestMapping(value = "/adminDolbomApply", method = RequestMethod.PUT)
+	public String cancelApplyDolbomAdmin() {
+
+		return "";
+	}
+	@RequestMapping(value = "/adminDolbomSearch", method = RequestMethod.GET)
+	public String listSearchDolbomAdmin() {
+
+		return "";
+	}
+	@RequestMapping(value = "/adminDolbomSearch", method = RequestMethod.POST)
+	public String pauseSearchDolbomAdmin() {
+
+		return "";
+	}
+	@RequestMapping(value = "/adminDolbomAdd", method = RequestMethod.GET)
+	public String formAddDolbomAdmin() {
+
+		return "";
+	}
+	@RequestMapping(value = "/adminDolbomAdd", method = RequestMethod.POST)
+	public String submitAddDolbomAdmin() {
 
 		return "";
 	}

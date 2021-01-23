@@ -7,6 +7,7 @@ public class Member {
 	private String memAddress;
 	private String memName;
 	private String memPhoneNum;
+	private int memDolbomiStatus;
 	
 	public String getMemId() {
 		return memId;
@@ -37,6 +38,12 @@ public class Member {
 	}
 	public void setMemPhoneNum(String memPhoneNum) {
 		this.memPhoneNum = memPhoneNum;
+	}
+	public int getMemDolbomiStatus() {
+		return memDolbomiStatus;
+	}
+	public void setMemDolbomiStatus(int memDolbomiStatus) {
+		this.memDolbomiStatus = memDolbomiStatus;
 	}
 	
 }

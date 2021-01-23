@@ -33,91 +33,95 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="${cp}/resources/assets/demo/demo.css" rel="stylesheet" />
 </head>
+ <body>
+ <nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg"  color-on-scroll="100">
+  <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="${cp}/member/login" style="font-family: godik; font-size:30px;">
+          애완동물 돌봄 서비스 </a>
 
-<body class="index-page sidebar-collapse">
-  
-  
-  <div class="main main-raised-login">
-    
-    <!--         end carousel -->
-    <!-- <div class="section">
-      <div class="container text-center" style="padding: 50px -30px;">
-        <div class="row">
-          <div class="mx-auto text-center">
-            <h2 style="font-family: godik;">애완동물 돌봄 서비스</h2>
-          </div>
-        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
       </div>
-    </div> -->
-    <div class="section section-signup page-header" style="margin: 0 0 0 0; background-image: url('${cp}/resources/assets/img/pets4.jpg');">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 mx-auto">
-            <div class="card card-login">
-              <form class="form" action="${cp}/member/login" method="get">
-                <div class="card-header card-header-primary text-center">
-                  <h4 class="card-title" style="font-family: godik;">애완동물 돌봄 서비스</h4>
-                </div>
-                <div class="card-body">
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="material-icons">face</i>
-                      </span>
-                    </div>
-                    <input type="text" class="form-control" style="font-family: godik;" placeholder="아이디">
-                  </div>
-                  <!-- <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="material-icons">mail</i>
-                      </span>
-                    </div>
-                    <input type="email" class="form-control" placeholder="Email">
-                  </div> -->
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="material-icons">lock_outline</i>
-                      </span>
-                    </div>
-                    <input type="password" class="form-control"  style="font-family: godik;" placeholder="패스워드" autocomplete="">
-                  </div>
-                </div>
-                <!-- <div class="footer text-center">
-                  <a href="javascript:;" class="btn btn-primary btn-link btn-wd btn-lg">Get Started</a>
-                </div> -->
-                <div class="footer text-center" style="margin-top: 20px;">
-                <button class="btn btn-primary" type="submit" style="font-family: godik;">로그인</button>
-                </div>
-                
-              </form>
-            </div>
-          </div>
+
+      <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="#" class="nav-link" style="font-family: godik;">
+                  <i class="material-icons">apps</i> 돌봄서비스 신청
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" style="font-family: godik;">
+                  <i class="material-icons">apps</i> 우리동네돌봄센터
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" style="font-family: godik;">
+                  <i class="material-icons">apps</i> 돌보미신청
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" style="font-family: godik;">
+                  <i class="material-icons">apps</i> 마이페이지
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="${cp}/member/login" class="nav-link" style="font-family: godik;">
+                  <i class="material-icons">apps</i> 로그인
+              </a>
+            </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('${cp}/resources/assets/img/pets1.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 ml-auto mr-auto">
+        <div class="brand text-center">
+          <h1 style="font-family: godik;">애완동물 돌볼 서비스 및 돌봄 센터 서비스를 신청할 수 있습니다.</h1>
+          
         </div>
       </div>
     </div>
-  </div>  
-  <footer class="footer" data-background-color="black">
-    <div class="container">
-      <nav class="float-left">
-        <ul>
-          <li>
-            <a href="#">
-              	관리자 로그인
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <div class="copyright float-right">
+  </div>
+</div>
+
+<div class="main main-raised">
+  <div class="container">
+    <div class="section text-center">
+      <h2 class="title" style="font-family: godik;">애완동물 돌봄 서비스란?</h2>
+    </div>
+  </div>
+</div>
+
+<footer class="footer footer-default" >
+  <div class="container">
+    <nav class="float-left">
+      <ul>
+        <li>
+          <a href="https://www.creative-tim.com/">
+              Creative Tim
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="copyright float-right">
         &copy;
         <script>
-          document.write(new Date().getFullYear())
+            document.write(new Date().getFullYear())
         </script>, made with <i class="material-icons">favorite</i> by
-        <a href="https://www.creative-tim.com/" target="_blank">Creative Tim</a> for a better web.
-      </div>
+        <a href="https://www.creative-tim.com/" target="blank">Creative Tim</a> for a better web.
     </div>
-  </footer>
+  </div>
+</footer>
   <!--   Core JS Files   -->
   <script src="<c:url value="/resources/assets/js/core/jquery.min.js" />" type="text/javascript"></script>
   <script src="<c:url value="/resources/assets/js/core/popper.min.js" />"  type="text/javascript"></script>
