@@ -2,48 +2,54 @@ package com.eshc.petdolbom.member;
 
 public class Member {
 	
-	private String memId;
-	private String memPw;
-	private String memAddress;
-	private String memName;
-	private String memPhoneNum;
-	private int memDolbomiStatus;
-	
-	public String getMemId() {
-		return memId;
+	private String id;
+	private String password;
+	private String address;
+	private String name;
+	private String phone_num;
+	private String license;
+	private int dolbomi_status;
+	public String getId() {
+		return id;
 	}
-	public void setMemId(String memId) {
-		this.memId = memId;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getMemPw() {
-		return memPw;
+	public String getPassword() {
+		return password;
 	}
-	public void setMemPw(String memPw) {
-		this.memPw = memPw;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getMemAddress() {
-		return memAddress;
+	public String getAddress() {
+		return address;
 	}
-	public void setMemAddress(String memAddress) {
-		this.memAddress = memAddress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public String getMemName() {
-		return memName;
+	public String getName() {
+		return name;
 	}
-	public void setMemName(String memName) {
-		this.memName = memName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getMemPhoneNum() {
-		return memPhoneNum;
+	public String getPhone_num() {
+		return phone_num;
 	}
-	public void setMemPhoneNum(String memPhoneNum) {
-		this.memPhoneNum = memPhoneNum;
+	public void setPhone_num(String phone_num) {
+		this.phone_num = phone_num;
 	}
-	public int getMemDolbomiStatus() {
-		return memDolbomiStatus;
+	public String getLicense() {
+		return license;
 	}
-	public void setMemDolbomiStatus(int memDolbomiStatus) {
-		this.memDolbomiStatus = memDolbomiStatus;
+	public void setLicense(String license) {
+		this.license = license;
+	}
+	public int getDolbomi_status() {
+		return dolbomi_status;
+	}
+	public void setDolbomi_status(int dolbomi_status) {
+		this.dolbomi_status = dolbomi_status;
 	}
 	
 }

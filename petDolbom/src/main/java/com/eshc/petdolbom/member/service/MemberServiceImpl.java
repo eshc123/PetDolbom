@@ -1,5 +1,7 @@
 package com.eshc.petdolbom.member.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,14 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	MemberDaoImpl memberDao;
 	
+	
+	
+	@Override
+	public List<Member> selectMembers() throws Exception {
+		// TODO Auto-generated method stub
+		return memberDao.selectMembers();
+	}
+
 	@Override
 	public void createMember(Member member) {
 		// TODO Auto-generated method stub

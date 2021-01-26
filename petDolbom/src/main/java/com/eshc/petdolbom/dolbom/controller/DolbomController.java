@@ -28,7 +28,7 @@ public class DolbomController {
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String searchPageDolbom() {
 
-		return "";
+		return "/dolbom/search";
 	}
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public String searchDolbom() {

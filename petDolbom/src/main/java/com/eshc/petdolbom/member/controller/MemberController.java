@@ -2,6 +2,7 @@ package com.eshc.petdolbom.member.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,17 +24,19 @@ import com.eshc.petdolbom.pet.Pet;
 @RequestMapping("/member")
 public class MemberController {
 //	
-//	@Autowired
-//	@Qualifier("memberService")
-//	MemberService service;
+	@Autowired
+	MemberService service;
 	
 	@ModelAttribute("cp")
 	public String getContextPath(HttpServletRequest request) {
 		return request.getContextPath();
 	}
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index() {
-		return "/index";
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String index() throws Exception {
+		List<Member> memberList = service.selectMembers();
+		System.out.println("asd");
+		System.out.println(memberList.toString());
+		return "/home";
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String formLogin(Member member, HttpSession session) {
@@ -55,7 +58,7 @@ public class MemberController {
 //		
 //		session.setAttribute("member", mem);
 		
-		return "/member/login";
+		return "/member/main";
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String formRegister(Member member) {

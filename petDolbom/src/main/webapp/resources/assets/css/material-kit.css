@@ -13,6 +13,9 @@
 
  */
 /*     brand Colors              */
+.font-gd {
+  font-family: godik;
+}
 .alert-text {
   font-family: godik;
   color: #cccccc;

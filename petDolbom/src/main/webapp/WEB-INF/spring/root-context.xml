@@ -14,16 +14,25 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSource"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
         <property name="url"
-            value="jdbc:mysql://127.0.0.1:3306/dolbomdb?useSSL=false&amp;serverTimezone=UTC">
-        </property>
+            value="jdbc:log4jdbc:mysql://127.0.0.1:3306/dolbomdb?useSSL=false&amp;serverTimezone=UTC"></property>
         <property name="username" value="root"></property>
         <property name="password" value="1313"></property>
-    </bean>     
-	<!-- mybatis SqlSessionFactoryBean -->
+    </bean>
+ 
+    <!-- mybatis SqlSessionFactoryBean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+        <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
     </bean>
-
+    
+        <!-- mybatis      -->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"
+        destroy-method="clearCache">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+    </bean>
+	<context:component-scan base-package="com.eshc.petdolbomdb.member.dao"></context:component-scan>
+	<context:component-scan base-package="com.eshc.petdolbomdb.member.service"></context:component-scan>
 </beans>

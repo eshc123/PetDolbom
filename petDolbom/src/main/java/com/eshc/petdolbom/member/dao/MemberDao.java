@@ -1,5 +1,7 @@
 package com.eshc.petdolbom.member.dao;
 
+import java.util.List;
+
 import com.eshc.petdolbom.member.Member;
 import com.eshc.petdolbom.pet.Pet;
 
@@ -12,4 +14,6 @@ public interface MemberDao {
 	Pet selectPet(Pet pet);
 	int updatePet(Pet pet);
 	int deletePet(Pet pet);
+	
+	public List<Member> selectMembers() throws Exception;
 }

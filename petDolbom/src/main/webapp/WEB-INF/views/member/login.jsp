@@ -54,7 +54,7 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="row">
           <div class="col-lg-4 col-md-6 mx-auto">
             <div class="card card-login">
-              <form class="form" action="${cp}/member/login" method="get">
+              <form class="form" action="${cp}/member/login" method="post">
                 <div class="card-header card-header-primary text-center">
                   <h4 class="card-title" style="font-family: godik;">애완동물 돌봄 서비스</h4>
                 </div>

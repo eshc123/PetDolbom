@@ -51,13 +51,28 @@ The above copyright notice and this permission notice shall be included in all c
       <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                  <i class="material-icons">apps</i> Template
+              <a href="${cp}/dolbom/search" class="nav-link" style="font-family: godik;">
+                  <i class="material-icons">pets</i> 돌봄서비스 신청
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                  <i class="material-icons">apps</i> Template
+              <a href="#" class="nav-link" style="font-family: godik;">
+                  <i class="material-icons">home</i> 우리동네돌봄센터
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" style="font-family: godik;">
+                  <i class="material-icons">child_friendly</i> 돌보미신청
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" style="font-family: godik;">
+                  <i class="material-icons">person</i> 마이페이지
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="${cp}/member/login" class="nav-link" style="font-family: godik;">
+                  <i class="material-icons">arrow_back</i> 로그아웃
               </a>
             </li>
           </ul>
@@ -69,10 +84,10 @@ The above copyright notice and this permission notice shall be included in all c
 <div class="page-header header-filter" data-parallax="true" style="background-image: url('${cp}/resources/assets/img/pets1.jpg')">
   <div class="container">
     <div class="row">
-      <div class="col-md-8 ml-auto mr-auto">
+      <div class="col-md-12 ml-auto mr-auto">
         <div class="brand text-center">
-          <h1>Your title here</h1>
-          <h3 class="title text-center">Subtitle</h3>
+          <h1 style="font-family: godik;">애완동물 돌볼 서비스 및 돌봄 센터 서비스를 신청할 수 있습니다.</h1>
+          
         </div>
       </div>
     </div>
@@ -82,7 +97,7 @@ The above copyright notice and this permission notice shall be included in all c
 <div class="main main-raised">
   <div class="container">
     <div class="section text-center">
-      <h2 class="title">Your main section here</h2>
+      <h2 class="title" style="font-family: godik;">애완동물 돌봄 서비스란?</h2>
     </div>
   </div>
 </div>

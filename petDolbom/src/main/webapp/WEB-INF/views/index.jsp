@@ -51,28 +51,8 @@ The above copyright notice and this permission notice shall be included in all c
       <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
-                  <i class="material-icons">apps</i> 돌봄서비스 신청
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
-                  <i class="material-icons">apps</i> 우리동네돌봄센터
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
-                  <i class="material-icons">apps</i> 돌보미신청
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
-                  <i class="material-icons">apps</i> 마이페이지
-              </a>
-            </li>
-            <li class="nav-item">
               <a href="${cp}/member/login" class="nav-link" style="font-family: godik;">
-                  <i class="material-icons">apps</i> 로그인
+                  <i class="material-icons">login</i> 로그인
               </a>
             </li>
           </ul>
