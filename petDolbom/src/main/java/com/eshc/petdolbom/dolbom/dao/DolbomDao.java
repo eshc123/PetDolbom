@@ -1,9 +1,13 @@
 package com.eshc.petdolbom.dolbom.dao;
 
+import java.util.List;
+
 import com.eshc.petdolbom.dolbom.FullTime;
 import com.eshc.petdolbom.dolbom.FullTimeReservation;
+import com.eshc.petdolbom.dolbom.FullTimeVO;
 import com.eshc.petdolbom.dolbom.PartTime;
 import com.eshc.petdolbom.dolbom.PartTimeReservation;
+import com.eshc.petdolbom.dolbom.PartTimeVO;
 
 public interface DolbomDao {
 	int insertFullTime(FullTime fullTime);
@@ -25,4 +29,7 @@ public interface DolbomDao {
 	PartTimeReservation selectPartTimeReservation(PartTimeReservation partTimeReservation);
 	int updatePartTimeReservation(PartTimeReservation partTimeReservation);
 	int deletePartTimeReservation(PartTimeReservation partTimeReservation);
+	
+	public List<FullTimeVO> searchFullTime() throws Exception;
+	public List<PartTimeVO> searchPartTime() throws Exception;
 }

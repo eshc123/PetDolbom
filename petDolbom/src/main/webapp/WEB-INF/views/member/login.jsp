@@ -65,7 +65,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <i class="material-icons">face</i>
                       </span>
                     </div>
-                    <input type="text" class="form-control" style="font-family: godik;" placeholder="아이디">
+                    <input type="text" name="id" class="form-control" style="font-family: godik;" placeholder="아이디">
                   </div>
                   <!-- <div class="input-group">
                     <div class="input-group-prepend">
@@ -81,7 +81,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <i class="material-icons">lock_outline</i>
                       </span>
                     </div>
-                    <input type="password" class="form-control"  style="font-family: godik;" placeholder="패스워드" autocomplete="">
+                    <input type="password" name="password" class="form-control"  style="font-family: godik;" placeholder="패스워드" autocomplete="">
                   </div>
                 </div>
                 <!-- <div class="footer text-center">

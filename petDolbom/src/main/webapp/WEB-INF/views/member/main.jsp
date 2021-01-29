@@ -37,7 +37,7 @@ The above copyright notice and this permission notice shall be included in all c
  <nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg"  color-on-scroll="100">
   <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="${cp}/member/login" style="font-family: godik; font-size:30px;">
+        <a class="navbar-brand" href="${cp}/member/main" style="font-family: godik; font-size:30px;">
           애완동물 돌봄 서비스 </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +56,7 @@ The above copyright notice and this permission notice shall be included in all c
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/center/info" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">home</i> 우리동네돌봄센터
               </a>
             </li>

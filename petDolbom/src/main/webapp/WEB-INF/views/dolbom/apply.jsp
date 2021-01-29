@@ -32,12 +32,22 @@ The above copyright notice and this permission notice shall be included in all c
   <link href="${cp}/resources/assets/css/material-kit.css?v=2.0.7" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="${cp}/resources/assets/demo/demo.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<style>
+  .btn-width{
+    width: 90px;
+  }
+  .btn-width-long{
+    width: 180px;
+  }
+</style>
 </head>
- <body>
- <nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg"  color-on-scroll="100">
-  <div class="container">
+ <body class="profile-page sidebar-collapse">
+  <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
+    <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="${cp}/" style="font-family: godik; font-size:30px;">
+        <a class="navbar-brand" href="${cp}/member/main" style="font-family: godik; font-size:30px;">
           애완동물 돌봄 서비스 </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,37 +61,75 @@ The above copyright notice and this permission notice shall be included in all c
       <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
+              <a href="${cp}/dolbom/search" class="nav-link" style="font-family: godik;">
+                  <i class="material-icons">pets</i> 돌봄서비스 신청
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="${cp}/center/info" class="nav-link" style="font-family: godik;">
+                  <i class="material-icons">home</i> 우리동네돌봄센터
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" style="font-family: godik;">
+                  <i class="material-icons">child_friendly</i> 돌보미신청
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" style="font-family: godik;">
+                  <i class="material-icons">person</i> 마이페이지
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="${cp}/member/login" class="nav-link" style="font-family: godik;">
-                  <i class="material-icons">login</i> 로그인
+                  <i class="material-icons">arrow_back</i> 로그아웃
               </a>
             </li>
           </ul>
       </div>
   </div>
-</nav>
-
-
-<div class="page-header header-filter" data-parallax="true" style="background-image: url('${cp}/resources/assets/img/pets1.jpg')">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 ml-auto mr-auto">
-        <div class="brand text-center">
-          <h1 style="font-family: godik;">애완동물 돌볼 서비스 및 돌봄 센터 서비스를 신청할 수 있습니다.</h1>
-          
+  </nav>
+  <!-- main content  -->
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url('${cp}/resources/assets/img/dogcat.jpg');"></div>
+  <div class="main main-raised">
+    <div class="profile-content">
+      <div class="container">
+        <div class="row">
+           <h2 class="font-gd" style="margin-top: 20px;">돌봄 서비스 신청서 작성</h2>
+          <div class="col-md-12 ml-auto mr-auto">
+            <div class="card card-nav-tabs">
+              <div class="card-body">
+              	<h4>봉사자 정보</h4>
+                  <div class="col-md-11 ml-auto mr-auto">
+                    <p class="font-gd" style="font-size: 20px">이름 : </p>
+                  	<p class="font-gd" style="font-size: 20px">지역 : </p>
+                  	<p class="font-gd" style="font-size: 20px">돌봄 가능 애완동물 : </p>
+                  	<p class="font-gd" style="font-size: 20px">서비스 종류 : </p>
+                  </div>
+                </div>
+                
+              
+              </div>
+              <div class="card card-nav-tabs">
+              <div class="card-body ">
+              	<h4>신청자 정보</h4>
+                  <div class="col-md-11 ml-auto mr-auto">
+                    <p class="font-gd" style="font-size: 20px">이름 : </p>
+                  	<p class="font-gd" style="font-size: 20px">전화번호 : </p>
+                  	<p class="font-gd" style="font-size: 20px">주소 : </p>
+                  	<p class="font-gd" style="font-size: 20px">날짜 / 시간 선택 : </p>
+                  	<p class="font-gd" style="font-size: 20px">애완동물 선택 : </p>
+                  </div>
+                </div>
+              </div>
+            </div>         
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="main main-raised">
-  <div class="container">
-    <div class="section text-center">
-      <h2 class="title" style="font-family: godik;">애완동물 돌봄 서비스란?</h2>
-    </div>
-  </div>
-</div>
-
+       
+        </div>
+        
+        
+        </div>
 <footer class="footer footer-default" >
   <div class="container">
     <nav class="float-left">

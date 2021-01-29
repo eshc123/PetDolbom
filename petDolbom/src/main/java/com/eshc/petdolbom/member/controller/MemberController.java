@@ -50,7 +50,15 @@ public class MemberController {
 		return "/member/login";
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String submitLogin(Member member, HttpSession session) {
+	public String submitLogin(Member member, HttpSession session) throws Exception {
+		if(service.loginMember(member)) {
+			return "/member/main";
+		}
+		else return "/member/login";
+		
+	}
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	public String main(Member member, HttpSession session) {
 		
 //		Member mem = service.getMember(member);
 //		if(mem == null) 
@@ -70,10 +78,11 @@ public class MemberController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String submitRegister(Member member) {
+		member.setLicense("asd");
+		member.setDolbomi_status(0);
+		service.createMember(member);
 		
-		//service.createMember(member);
-		
-		return "/member/joinOk";
+		return "/member/login";
 	}
 //	
 //	@ModelAttribute("serverTime")

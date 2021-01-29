@@ -1,15 +1,20 @@
 package com.eshc.petdolbom.dolbom.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.eshc.petdolbom.dolbom.DolbomTime;
+import com.eshc.petdolbom.dolbom.FullTime;
 import com.eshc.petdolbom.dolbom.service.DolbomService;
 import com.eshc.petdolbom.member.Member;
 
@@ -17,8 +22,8 @@ import com.eshc.petdolbom.member.Member;
 @RequestMapping("/dolbom")
 public class DolbomController {
 	
-//	@Autowired
-//	DolbomService dolbomService;
+	@Autowired
+	DolbomService dolbomService;
 	
 	@ModelAttribute("cp")
 	public String getContextPath(HttpServletRequest request) {
@@ -26,8 +31,12 @@ public class DolbomController {
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String searchPageDolbom() {
-
+	public String searchPageDolbom(Model model) throws Exception {
+		 List<FullTime> fullTimeList = dolbomService.searchFullTime();
+		 List<DolbomTime> dolbomTimeList = dolbomService.searchDolbomTime();
+		 
+		 model.addAttribute("fullServiceList",fullTimeList);
+		 model.addAttribute("dolbomServiceList",dolbomTimeList);
 		return "/dolbom/search";
 	}
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
@@ -43,7 +52,7 @@ public class DolbomController {
 	@RequestMapping(value = "/apply", method = RequestMethod.GET)
 	public String applyPage() {
 
-		return "";
+		return "/dolbom/apply";
 	}
 	@RequestMapping(value = "/detail", method = RequestMethod.POST)
 	public String applyDolbom() {

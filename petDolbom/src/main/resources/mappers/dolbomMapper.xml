@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.eshc.mapper.dolbomMapper">
+ 
+ <select id="selectFullTimeDolbom" resultType="fullTimeVO">
+<![CDATA[
+SELECT sft.full_service_idx,sft.member_id,sft.cared_pet,sft.full_service_status,m.name,m.address
+FROM service_full_time as sft , member as m  
+WHERE sft.full_service_status = #{full_service_status} and sft.member_id =  m.id  
+]]> 
+    </select>
+ <select id="selectPartTimeDolbom" resultType="partTimeVO">
+ <![CDATA[        
+SELECT spt.part_service_idx,spt.member_id,spt.cared_pet,spt.start_time,spt.end_time,spt.part_service_status,m.name,m.address
+FROM service_part_time as spt join member as m on spt.member_id =  m.id  
+WHERE spt.part_service_status = #{part_service_status}
+]]>
+    </select>
+</mapper>
+

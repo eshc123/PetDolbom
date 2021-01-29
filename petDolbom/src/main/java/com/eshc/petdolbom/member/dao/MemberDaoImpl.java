@@ -23,11 +23,17 @@ public class MemberDaoImpl implements MemberDao{
  
         return sqlSession.selectList(Namespace+".selectMembers");
     }
-
+    
 	
 	@Override
+	public Member login(String id) throws Exception {
+		 return sqlSession.selectOne(Namespace+".loginMember",id);
+	}
+
+
+	@Override
 	public int insertMember(Member member) {
-		// TODO Auto-generated method stub
+		sqlSession.insert(Namespace+".insertMember",member);
 		return 0;
 	}
 

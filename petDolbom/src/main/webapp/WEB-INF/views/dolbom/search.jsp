@@ -47,7 +47,7 @@ The above copyright notice and this permission notice shall be included in all c
   <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="${cp}/member/login" style="font-family: godik; font-size:30px;">
+        <a class="navbar-brand" href="${cp}/member/main" style="font-family: godik; font-size:30px;">
           애완동물 돌봄 서비스 </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,7 @@ The above copyright notice and this permission notice shall be included in all c
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/center/info" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">home</i> 우리동네돌봄센터
               </a>
             </li>
@@ -94,104 +94,106 @@ The above copyright notice and this permission notice shall be included in all c
     <div class="profile-content">
       <div class="container">
         <div class="row">
-         <p class="font-gd" style="font-size: 40px; margin-top: 20px;">돌봄 서비스 </p>
+           <h2 class="font-gd" style="margin-top: 40px;">돌봄 서비스 </h2>
           <div class="col-md-12 ml-auto mr-auto">
             <div class="card card-nav-tabs">
               <div class="card-body ">
                   <div class="col-md-11 ml-auto mr-auto">
-                    <input type="checkbox" class="btn-check" id="check_all" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_all" autocomplete="off" value="전체">
                     <label class="btn btn-outline-success btn-width" for="check_all">전체</label>
-                    <input type="checkbox" class="btn-check" id="check_gwanak" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_gangnam" autocomplete="off" value="강남구">
+                    <label class="btn btn-outline-success btn-width" for="check_gangnam" >강남구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_gangdong" autocomplete="off" value="강동구">
+                    <label class="btn btn-outline-success btn-width" for="check_gangdong" >강동구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_gangbuk" autocomplete="off" value="강북구">
+                    <label class="btn btn-outline-success btn-width" for="check_gangbuk" >강북구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_gangseo" autocomplete="off" value="강서구">
+                    <label class="btn btn-outline-success btn-width" for="check_gangseo" >강서구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_gwanak" autocomplete="off" value="관악구">
                     <label class="btn btn-outline-success btn-width" for="check_gwanak" >관악구</label>
-                    <input type="checkbox" class="btn-check" id="check_seodaemoon" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_gwangjin" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_gwangjin" >광진구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_gooro" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_gooro" >구로구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_geumcheon" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_geumcheon" >금천구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_nowon" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_nowon" >노원구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_dobong" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_dobong" >도봉구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_dongdaemoon" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_dongdaemoon" >동대문구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_dongjak" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_dongjak" >동작구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_mapo" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_mapo">마포구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_seodaemoon" autocomplete="off">
                     <label class="btn btn-outline-success btn-width" for="check_seodaemoon" >서대문구</label>
-                    <input type="checkbox" class="btn-check" id="check_gwanak" autocomplete="off">
-                    <label class="btn btn-outline-success btn-width" for="check_gwanak" >관악구</label>
-                    <input type="checkbox" class="btn-check" id="check_gwanak" autocomplete="off">
-                    <label class="btn btn-outline-success btn-width" for="check_gwanak" >관악구</label>
-                    <input type="checkbox" class="btn-check" id="check_gwanak" autocomplete="off">
-                    <label class="btn btn-outline-success btn-width" for="check_gwanak" >관악구</label>
-                    <input type="checkbox" class="btn-check" id="check_gwanak" autocomplete="off">
-                    <label class="btn btn-outline-success btn-width" for="check_gwanak" >관악구</label>
-                    <input type="checkbox" class="btn-check" id="check_gwanak" autocomplete="off">
-                    <label class="btn btn-outline-success btn-width" for="check_gwanak" >관악구</label>
-                    <input type="checkbox" class="btn-check" id="check_gwanak" autocomplete="off">
-                    <label class="btn btn-outline-success btn-width" for="check_gwanak" >관악구</label>
-                    <input type="checkbox" class="btn-check" id="check_gwanak" autocomplete="off">
-                    <label class="btn btn-outline-success btn-width" for="check_gwanak" >관악구</label>
-                    <input type="checkbox" class="btn-check" id="check_gwanak" autocomplete="off">
-                    <label class="btn btn-outline-success btn-width" for="check_gwanak" >관악구</label>
-                    <input type="checkbox" class="btn-check" id="check_gwanak" autocomplete="off">
-                    <label class="btn btn-outline-success btn-width" for="check_gwanak" >관악구</label>
-                    <input type="checkbox" class="btn-check" id="check_gwanak" autocomplete="off">
-                    <label class="btn btn-outline-success btn-width" for="check_gwanak" >관악구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_seocho" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_seocho" >서초구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_seongdong" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_seongdong" >성동구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_seongbuk" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_seongbuk" >성북구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_songpa" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_songpa" >송파구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_yangcheon" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_yangcheon" >양천구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_yeongdeungpo" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_yeongdeungpo" >영등포구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_yongsan" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_yongsan" >용산구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_eunpyeong" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_eunpyeong" >은평구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_jongro" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_jongro" >종로구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_joong" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_joong" >중구</label>
+                    <input type="checkbox" name="region" class="btn-check" id="check_joongrang" autocomplete="off">
+                    <label class="btn btn-outline-success btn-width" for="check_joongrang" >중랑구</label>
                     <hr>
                     <input type="checkbox" class="btn-check" id="check_all_day" autocomplete="off">
                     <label class="btn btn-outline-success btn-width-long" for="check_all_day" >종일 돌봄 서비스</label>
                     <input type="checkbox" class="btn-check" id="check_part_time" autocomplete="off">
                     <label class="btn btn-outline-success btn-width-long" for="check_part_time" >시간제 돌봄 서비스</label>
                   </div>
-                  <div class="col-md-11 ml-auto mr-auto text-center" style="margin-top: 40px;">
-                    <button class="btn btn-secondary btn-width">검색</button>
+                  <div class="col-md-11 ml-auto mr-auto text-center" >
+                    <button class="btn btn-secondary btn-width" onclick="value_check()">검색</button>
                   </div>
                       
   
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 ml-auto mr-auto">
+            <c:forEach items="${dolbomServiceList}" var="dolbomService">
+            <div class="col-md-3">
               <div class="card">
                 <div class="card-body"> 
-                  <p class="font-gd" style="font-size: 20px">이름 : </p>
-                  <p class="font-gd" style="font-size: 20px">지역 : </p>
-                  <div>                  
+                  <p class="font-gd" style="font-size: 20px">이름 : ${dolbomService.name}</p>
+                  <p class="font-gd" style="font-size: 20px">지역 : ${dolbomService.address}</p>
+                  <p class="font-gd" style="font-size: 20px">${dolbomService.dolbomTimeStatus}(${dolbomService.time})</p>
+                  <div>
+                  <c:forEach items="${dolbomService.dolbomTimeCaredPet}" var="fs">                  
                     <button class="btn btn-outline-success btn-fab btn-round btn-lg font-gd disabled" style="font-size: 13px;">
-                   강아지
+                   ${fs}
                   </button>
-                  <button class="btn btn-outline-success btn-fab btn-round btn-lg font-gd disabled" style="font-size: 13px;">
-                    고양이
-                   </button>
-                   <button class="btn btn-outline-success btn-fab btn-round btn-lg font-gd disabled" style="font-size: 13px;">
-                    새
-                   </button>
+                  </c:forEach>
                   </div>
                   <div>                  
-                    <button class="btn btn-outline-success btn-fab btn-round btn-lg font-gd disabled" style="font-size: 13px;">
-                   종일
+                    <%-- <button class="btn btn-outline-success btn-fab btn-round btn-lg font-gd disabled" style="font-size: 13px;">
+                  	${dolbomService.dolbomTimeStatus}
                   </button>
-                  <button class="btn btn-outline-success btn-fab btn-round btn-lg font-gd disabled" style="font-size: 13px;">
-                    시간제
-                   </button>
-
+                  <p class="font-gd" style="font-size: 16px">${dolbomService.time}</p> --%>
                   </div>
                   <div class="col-md-11 ml-auto mr-auto" style="margin-top: 10px;">
-                    <a href="#"><button class="btn btn-secondary btn-width font-gd">예약현황</button></a>
-                    <a href="#"><button class="btn btn-secondary btn-width font-gd">신청</button></a>
+                    <a href="${cp}/dolbom/search"><button class="btn btn-secondary btn-width font-gd">예약현황</button></a>
+                    <a href="${cp}/dolbom/apply"><button class="btn btn-secondary btn-width font-gd">신청</button></a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 ml-auto mr-auto">
-              <div class="card">
-                <div class="card-body">
-                  <p>asd</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 ml-auto mr-auto">
-              <div class="card">
-                <div class="card-body">
-                  <p>asd</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 ml-auto mr-auto">
-              <div class="card">
-                <div class="card-body">
-                  <p>asd</p>
-                </div>
-              </div>
-            </div>
+           </c:forEach>
+           
           </div>
         </div>
        
@@ -247,6 +249,18 @@ The above copyright notice and this permission notice shall be included in all c
           scrollTop: $('.section-download').offset().top
         }, 1000);
       }
+    }
+    function value_check() {
+        var select_obj = '';
+ 
+        $('input[type="checkbox"]:checked').each(function (index) {
+            if (index != 0) {
+                select_obj += ', ';
+            }
+            select_obj += $(this).val();
+        });
+ 
+        alert(select_obj);
     }
   </script>
 </body>

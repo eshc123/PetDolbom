@@ -16,4 +16,5 @@ public interface MemberDao {
 	int deletePet(Pet pet);
 	
 	public List<Member> selectMembers() throws Exception;
+	public Member login(String id) throws Exception;
 }

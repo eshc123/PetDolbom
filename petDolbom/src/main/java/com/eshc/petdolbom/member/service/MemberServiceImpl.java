@@ -20,6 +20,15 @@ public class MemberServiceImpl implements MemberService{
 	
 	
 	@Override
+	public boolean loginMember(Member member) throws Exception  {
+		
+		if(memberDao.login(member.getId()).getPassword().equals(member.getPassword())){
+			return true;
+		}
+		else return false;
+	}
+
+	@Override
 	public List<Member> selectMembers() throws Exception {
 		// TODO Auto-generated method stub
 		return memberDao.selectMembers();
@@ -28,6 +37,7 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void createMember(Member member) {
 		// TODO Auto-generated method stub
+		memberDao.insertMember(member);
 		
 	}
 

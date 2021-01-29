@@ -1,5 +1,8 @@
 package com.eshc.petdolbom.dolbom.service;
 
+import java.util.List;
+
+import com.eshc.petdolbom.dolbom.DolbomTime;
 import com.eshc.petdolbom.dolbom.FullTime;
 import com.eshc.petdolbom.dolbom.FullTimeReservation;
 import com.eshc.petdolbom.dolbom.PartTime;
@@ -25,4 +28,9 @@ public interface DolbomService {
 	PartTimeReservation getPartTimeReservation(PartTimeReservation partTimeReservation);
 	PartTimeReservation updatePartTimeReservation(PartTimeReservation partTimeReservation);
 	int deletePartTimeReservation(PartTimeReservation partTimeReservation);
+	
+	public List<FullTime> searchFullTime() throws Exception;
+	public List<PartTime> searchPartTime() throws Exception;
+	
+	public List<DolbomTime> searchDolbomTime() throws Exception;
 }

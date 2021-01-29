@@ -28,18 +28,18 @@ public class CenterController {
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
 	public String infoCenter() {
 
-		return "";
+		return "/center/info";
 	}
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detailCenter() {
 
-		return "";
+		return "/center/detail";
 	}
 	@RequestMapping(value = "/training", method = RequestMethod.GET)
 	public String searchTraining() {
 
-		return "";
+		return "/center/training";
 	}
 	@RequestMapping(value = "/training", method = RequestMethod.POST)
 	public String applyTraining() {

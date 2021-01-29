@@ -17,4 +17,5 @@ public interface MemberService {
 	int deletePet(Pet pet);
 	
 	public List<Member> selectMembers() throws Exception;
+	public boolean loginMember(Member member) throws Exception;
 }
