@@ -76,12 +76,12 @@ The above copyright notice and this permission notice shall be included in all c
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/member/mypage" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">person</i> 마이페이지
               </a>
             </li>
             <li class="nav-item">
-              <a href="${cp}/member/login" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/member/logout" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">arrow_back</i> 로그아웃
               </a>
             </li>

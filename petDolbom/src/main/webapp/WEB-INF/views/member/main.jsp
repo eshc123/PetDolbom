@@ -66,12 +66,12 @@ The above copyright notice and this permission notice shall be included in all c
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/member/mypage" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">person</i> 마이페이지
               </a>
             </li>
             <li class="nav-item">
-              <a href="${cp}/member/login" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/member/logout" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">arrow_back</i> 로그아웃
               </a>
             </li>
@@ -86,7 +86,7 @@ The above copyright notice and this permission notice shall be included in all c
     <div class="row">
       <div class="col-md-12 ml-auto mr-auto">
         <div class="brand text-center">
-          <h1 style="font-family: godik;">애완동물 돌볼 서비스 및 돌봄 센터 서비스를 신청할 수 있습니다.</h1>
+          <h1 style="font-family: godik;">애완동물 돌봄 서비스 및 돌봄 센터 서비스를 신청할 수 있습니다.</h1>
           
         </div>
       </div>

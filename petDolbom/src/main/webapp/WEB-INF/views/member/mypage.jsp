@@ -61,7 +61,7 @@ The above copyright notice and this permission notice shall be included in all c
       <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a href="${cp}/dolbom/search" class="nav-link" style="font-family: godik; ">
+              <a href="${cp}/dolbom/search" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">pets</i> 돌봄서비스 신청
               </a>
             </li>
@@ -99,44 +99,105 @@ The above copyright notice and this permission notice shall be included in all c
       <div class="container" >
       
         <div class="row" >
-        <div class="col-3" style="margin-top: 20px;">
-         <h2 class="font-gd" >우리동네 돌봄센터</h2>
+        <div class="col-2" style="margin-top: 20px;">
+         <h2 class="font-gd" >마이페이지</h2>
          </div>
-         <div class="col-3" style="margin-top: 15px; margin-left: -30px;">
+         <div class="col-3" style="margin-top: 15px; margin-left: -20px;">
          <ul class="navbar-nav ml-auto">
           <li class="dropdown nav-item">
-            <a href="#" class="dropdown-toggle nav-link font-gd" data-toggle="dropdown" style="font-size:20px;color:#000000;font-weight: bold;">
-              	애완동물 훈련 서비스
+            <a href="#" class="dropdown-toggle nav-link font-gd" data-toggle="dropdown" style="font-size:20px; color:#000000;font-weight: bold;">
+              	회원정보
             </a>
             <div class="dropdown-menu dropdown-with-icons">
-              <a href="${cp}/center/detail" class="dropdown-item font-gd">
-                	센터정보
+              <a href="${cp}/center/training" class="dropdown-item font-gd">
+                	애완동물 관리
               </a>
               <a href="${cp}/center/longPeriod" class="dropdown-item font-gd">
-                   애완동물 장기 돌봄 서비스
+                   돌보미 관리
               </a>
+               <a href="${cp}/center/longPeriod" class="dropdown-item font-gd">
+                   서비스 신청 현황 조회
+              </a>
+
             </div>
           </li>
           </ul>
 </div>
-
-<div class="col-md-12 ml-auto mr-auto">
-            
-              <div class="card card-nav-tabs">
-              <div class="card-body ">
-              	<h4>신청자 정보</h4>
-                  <div class="col-md-11 ml-auto mr-auto">
-                    <p class="font-gd" style="font-size: 20px">이름 : </p>
-                  	<p class="font-gd" style="font-size: 20px">전화번호 : </p>
-                  	<p class="font-gd" style="font-size: 20px">주소 : </p>
-                  	<p class="font-gd" style="font-size: 20px">날짜 / 시간 선택 : </p>
-                  	<p class="font-gd" style="font-size: 20px">애완동물 선택 : </p>
+</div>
+         <div class="col-lg-4 col-md-6 mx-auto ">
+            <div class="card card-login">
+              <form class="form" action="${cp}/member/register" method="post">
+               
+                <div class="card-body">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">perm_identity</i>
+                      </span>
+                    </div>
+                    <input type="text" name="id" id="identifier" class="form-control" required style="font-family: godik;" placeholder="아이디" minlength="4" value="${member.id}" disabled>
+                  </div>
+                  <div class="alert-text-danger" id="id-min"><span>ID 최소 4자</span>
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">lock_outline</i>
+                      </span>
+                    </div>
+                    <input type="password" name="password" id="password" class="form-control"  required  style="font-family: godik;" placeholder="비밀번호" autocomplete="" minlength="8" value="${member.password}">
+                  </div>
+                  <div class="alert-text-danger" id="pw-min"><span>비밀번호 최소 8자</span>
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">lock_outline</i>
+                      </span>
+                    </div>
+                    <input type="password" name="passwordCheck" id="passwordCheck" class="form-control" required style="font-family: godik;" placeholder="비밀번호 확인" autocomplete=""  minlength="8" value="${member.password}">
+                  </div>
+                  <div class="alert-text-danger" id="pw-check"><span>비밀번호가 다릅니다.</span>
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">face</i>
+                      </span>
+                    </div>
+                    <input type="text" name="name" class="form-control" required style="font-family: godik;" placeholder="이름" autocomplete="" value="${member.name}">
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">phone</i>
+                      </span>
+                    </div>
+                    <input type="text" name="phone_num" class="form-control" required style="font-family: godik;" placeholder="휴대폰번호" autocomplete="" value="${member.phone_num}">
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">home</i>
+                      </span>
+                    </div>
+                    <input type="text" name="address" class="form-control" required style="font-family: godik;" placeholder="주소" autocomplete="" value="${member.address}">
                   </div>
                 </div>
-              </div>
-            </div> 
-                 
+                <!-- <div class="footer text-center">
+                  <a href="javascript:;" class="btn btn-primary btn-link btn-wd btn-lg">Get Started</a>
+                </div> -->
+                <div class="footer text-center" style="margin-top: 40px; margin-bottom: 40px;">
+                <button class="btn btn-primary" id="submit" type="submit" style="font-family: godik; margin-right:20px;">수정</button>
+           		<a href="${cp}/member/login"><button class="btn btn-primary" type=button style="font-family: godik; margin-left:20px;">취소</button></a>
+                
+                </div>
+                
+              </form>
+            </div>
           </div>
+                 
+          
         </div>
        
         </div>
@@ -192,6 +253,51 @@ The above copyright notice and this permission notice shall be included in all c
         }, 1000);
       }
     }
+    $(function(){ 
+    	$("#pw-check").hide(); 
+    	$("input").keyup(function(){ 
+    		var pwd1=$("#password").val(); 
+    		var pwd2=$("#passwordCheck").val(); 
+    		if(pwd1 != "" && pwd2 != ""){ 
+    			if(pwd1 == pwd2){ 
+    				$("#pw-check").hide(); 
+    				$("#submit").removeAttr("disabled"); 
+    				}
+    			else{ 
+    				$("#pw-check").show(); 
+    				$("#submit").attr("disabled", "disabled");
+    				} 
+    			} 
+    		}); 
+    	});
+    $(function(){ 
+    	$("#id-min").hide(); 
+    	$("input").keyup(function(){ 
+    		var id=$("#identifier").val();
+    		if(id != ""){
+	    		if(id.length < 4){
+	    			$("#id-min").show();
+	    		}
+	    		else{
+	    			$("#id-min").hide();
+	    		}
+    		}
+    		}); 
+    	});
+    $(function(){ 
+    	$("#pw-min").hide(); 
+    	$("input").keyup(function(){ 
+    		var id=$("#password").val();
+    		if(id != ""){
+	    		if(id.length < 8){
+	    			$("#pw-min").show();
+	    		}
+	    		else{
+	    			$("#pw-min").hide();
+	    		}
+    		}
+    		}); 
+    	});
   </script>
 </body>
 

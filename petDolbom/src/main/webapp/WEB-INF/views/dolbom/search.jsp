@@ -76,12 +76,12 @@ The above copyright notice and this permission notice shall be included in all c
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/member/mypage" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">person</i> 마이페이지
               </a>
             </li>
             <li class="nav-item">
-              <a href="${cp}/member/login" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/member/logout" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">arrow_back</i> 로그아웃
               </a>
             </li>
@@ -99,7 +99,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="card card-nav-tabs">
               <div class="card-body ">
                   <div class="col-md-11 ml-auto mr-auto">
-                    <input type="checkbox" name="region" class="btn-check" id="check_all" autocomplete="off" value="전체">
+                    <input type="checkbox" name="region" class="btn-check" id="check_all" autocomplete="off" value="전체" checked>
                     <label class="btn btn-outline-success btn-width" for="check_all">전체</label>
                     <input type="checkbox" name="region" class="btn-check" id="check_gangnam" autocomplete="off" value="강남구">
                     <label class="btn btn-outline-success btn-width" for="check_gangnam" >강남구</label>
@@ -152,9 +152,9 @@ The above copyright notice and this permission notice shall be included in all c
                     <input type="checkbox" name="region" class="btn-check" id="check_joongrang" autocomplete="off">
                     <label class="btn btn-outline-success btn-width" for="check_joongrang" >중랑구</label>
                     <hr>
-                    <input type="checkbox" class="btn-check" id="check_all_day" autocomplete="off">
+                    <input type="checkbox" class="btn-check" id="check_all_day" autocomplete="off" checked>
                     <label class="btn btn-outline-success btn-width-long" for="check_all_day" >종일 돌봄 서비스</label>
-                    <input type="checkbox" class="btn-check" id="check_part_time" autocomplete="off">
+                    <input type="checkbox" class="btn-check" id="check_part_time" autocomplete="off" checked>
                     <label class="btn btn-outline-success btn-width-long" for="check_part_time" >시간제 돌봄 서비스</label>
                   </div>
                   <div class="col-md-11 ml-auto mr-auto text-center" >

@@ -32,6 +32,7 @@ The above copyright notice and this permission notice shall be included in all c
   <link href="${cp}/resources/assets/css/material-kit.css?v=2.0.7" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="${cp}/resources/assets/demo/demo.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
 <body class="index-page sidebar-collapse">
@@ -68,6 +69,8 @@ The above copyright notice and this permission notice shall be included in all c
                     <input type="text" name="id" id="identifier" class="form-control" required style="font-family: godik;" placeholder="아이디" minlength="4">
                   </div>
                   <div class="alert-text-danger" id="id-min"><span>ID 최소 4자</span>
+                  </div>
+                  <div class="alert-text-danger" id="id-check"><span>중복된 ID가 있습니다.</span>
                   </div>
                   <div class="input-group">
                     <div class="input-group-prepend">
@@ -224,6 +227,31 @@ The above copyright notice and this permission notice shall be included in all c
     		}
     		}); 
     	});
+    
+
+    $(document).ready(function(){
+    	//아이디 중복체크
+    	$('#id-check').hide();
+    	$('input[name=id]').blur(function(){
+    		var idCheck=$('input[name=id]').val();
+   			$.ajax({
+   				url:'idCheck?id='+idCheck,
+   				type:'get',
+   				success:function(data){
+					if(data<1){
+   						$('#id-check').hide(); 
+						$("#submit").removeAttr("disabled"); 
+   					
+					}else{
+   						$('#id-check').show();
+						$("#submit").attr("disabled", "disabled");
+					}
+						/* $('#id-check').text(ans);
+   					$('#id-check').css('color',color); */
+   				}
+   			})	
+    	});
+    });
   </script>
 </body>
 

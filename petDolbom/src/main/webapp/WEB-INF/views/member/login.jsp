@@ -65,7 +65,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <i class="material-icons">face</i>
                       </span>
                     </div>
-                    <input type="text" name="id" class="form-control" style="font-family: godik;" placeholder="아이디">
+                    <input type="text" name="id" class="form-control" style="font-family: godik;" placeholder="아이디" required>
                   </div>
                   <!-- <div class="input-group">
                     <div class="input-group-prepend">
@@ -81,8 +81,12 @@ The above copyright notice and this permission notice shall be included in all c
                         <i class="material-icons">lock_outline</i>
                       </span>
                     </div>
-                    <input type="password" name="password" class="form-control"  style="font-family: godik;" placeholder="패스워드" autocomplete="">
+                    <input type="password" name="password" class="form-control"  style="font-family: godik;" placeholder="패스워드" autocomplete="" required>
                   </div>
+                  <c:if test="${msg=='failure' }">
+                  <div class="alert-text-danger" id="id-pw-check"><span>ID와 비밀번호를 확인해주세요.</span>
+                  </div>
+                  </c:if>
                 </div>
                 <!-- <div class="footer text-center">
                   <a href="javascript:;" class="btn btn-primary btn-link btn-wd btn-lg">Get Started</a>

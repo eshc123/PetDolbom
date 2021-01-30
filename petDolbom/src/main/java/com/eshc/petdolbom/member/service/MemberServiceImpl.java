@@ -2,6 +2,8 @@ package com.eshc.petdolbom.member.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +22,23 @@ public class MemberServiceImpl implements MemberService{
 	
 	
 	@Override
-	public boolean loginMember(Member member) throws Exception  {
-		
+	public int idCheck(String id) throws Exception {
+		return memberDao.idCheck(id);
+	}
+
+	@Override
+	public Member getInfo(HttpSession session) throws Exception {
+		return memberDao.getInfo(session.getAttribute("memberId").toString());
+	}
+
+	@Override
+	public boolean loginMember(Member member,HttpSession session) throws Exception  {
+		boolean result =memberDao.login(member.getId()).getPassword().equals(member.getPassword());
 		if(memberDao.login(member.getId()).getPassword().equals(member.getPassword())){
-			return true;
+			session.setAttribute("memberId", member.getId());
+			session.setAttribute("memberPw", member.getPassword());
 		}
-		else return false;
+		return result;
 	}
 
 	@Override

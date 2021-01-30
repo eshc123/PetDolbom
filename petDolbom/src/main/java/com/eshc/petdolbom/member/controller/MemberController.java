@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.eshc.petdolbom.member.Member;
@@ -50,11 +51,19 @@ public class MemberController {
 		return "/member/login";
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String submitLogin(Member member, HttpSession session) throws Exception {
-		if(service.loginMember(member)) {
-			return "/member/main";
+	public ModelAndView submitLogin(Member member, HttpSession session) throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		if(service.loginMember(member,session)) {
+			mav.setViewName("/member/main");
+			mav.addObject("msg","success");
+//			return "/member/main";
 		}
-		else return "/member/login";
+		else { 
+			mav.setViewName("/member/login");
+			mav.addObject("msg","failure");		
+		}
+		return mav;
 		
 	}
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
@@ -83,6 +92,11 @@ public class MemberController {
 		service.createMember(member);
 		
 		return "/member/login";
+	}
+	@RequestMapping(value = "/idCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public int idCheck(String id) throws Exception {
+		return service.idCheck(id);
 	}
 //	
 //	@ModelAttribute("serverTime")
@@ -114,9 +128,9 @@ public class MemberController {
 	@RequestMapping("/logout")
 	public String logout(Member member, HttpSession session) {
 		
-//		session.invalidate();
+		session.invalidate();
 		
-		return "/member/logoutOk";
+		return "/index";
 	}
 //	
 //	// Modify
@@ -134,10 +148,12 @@ public class MemberController {
 //		return mav;
 //	}
 //	
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public ModelAndView formMemberUpdate(Member member, HttpServletRequest request) {
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public ModelAndView formMemberUpdate(HttpSession session) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("member", service.getInfo(session));
+		mav.setViewName("/member/mypage");
 //		HttpSession session = request.getSession();
 //		
 //		Member mem = service.updateMember(member);

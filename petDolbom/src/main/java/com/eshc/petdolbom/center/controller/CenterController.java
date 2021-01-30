@@ -49,7 +49,7 @@ public class CenterController {
 	@RequestMapping(value = "/longPeriod", method = RequestMethod.GET)
 	public String searchLongPeriod() {
 
-		return "";
+		return "/center/longPeriod";
 	}
 	@RequestMapping(value = "/longPeriod", method = RequestMethod.POST)
 	public String applyLongPeriod() {

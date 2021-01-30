@@ -25,5 +25,15 @@
               ID = #{id}       
       ]]>
 </select>
+<select id="idCheck" resultType="_int">
+<![CDATA[
+          SELECT
+              count(id)
+          FROM
+              member
+          WHERE
+              ID = #{id}       
+      ]]>
+</select>
 </mapper>
 

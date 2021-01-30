@@ -76,12 +76,12 @@ The above copyright notice and this permission notice shall be included in all c
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/member/mypage" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">person</i> 마이페이지
               </a>
             </li>
             <li class="nav-item">
-              <a href="${cp}/member/login" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/member/logout" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">arrow_back</i> 로그아웃
               </a>
             </li>
@@ -102,7 +102,7 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-body">
               	<h4>우리동네 돌봄센터란?</h4>
                   <div class="col-md-11 ml-auto mr-auto">
-                    <p class="font-gd" style="font-size: 20px">우리 동네의 ~~</p>
+                    <p class="font-gd" style="font-size: 20px">애완동물 돌봄 사각지대를 없애고 안전한 돌봄 서비스를 제공하기 위하여 집으로부터 10분 거리에 설치 중에 있습니다.</p>
                   	
                   </div>
                 </div>

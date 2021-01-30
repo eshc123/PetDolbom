@@ -76,12 +76,12 @@ The above copyright notice and this permission notice shall be included in all c
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/member/mypage" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">person</i> 마이페이지
               </a>
             </li>
             <li class="nav-item">
-              <a href="${cp}/member/login" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/member/logout" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">arrow_back</i> 로그아웃
               </a>
             </li>
@@ -105,23 +105,29 @@ The above copyright notice and this permission notice shall be included in all c
          <div class="col-3" style="margin-top: 15px; margin-left: -30px;">
          <ul class="navbar-nav ml-auto">
           <li class="dropdown nav-item">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" style="font-size:20px;">
+            <a href="#" class="dropdown-toggle nav-link font-gd" data-toggle="dropdown" style="font-size:20px; color:#000000;font-weight: bold;">
               	센터정보
             </a>
             <div class="dropdown-menu dropdown-with-icons">
-              <a href="${cp}/center/training" class="dropdown-item">
+              <a href="${cp}/center/training" class="dropdown-item font-gd">
                 	애완동물 훈련 서비스
               </a>
-              <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
+              <a href="${cp}/center/longPeriod" class="dropdown-item font-gd">
                    애완동물 장기 돌봄 서비스
               </a>
             </div>
           </li>
           </ul>
 </div>
-          <div class="col-md-12 ml-auto mr-auto">
+         <div class="col-md-12 ml-auto mr-auto">
             
+              <div class="card card-nav-tabs">
+              <div class="card-body ">
+              	<h4>돌봄센터 정보</h4>
+                  
+                </div>
               </div>
+            </div>
               
                  
           </div>

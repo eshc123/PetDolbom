@@ -18,7 +18,21 @@ public class MemberDaoImpl implements MemberDao{
     
     private static final String Namespace = "com.eshc.mapper.memberMapper";
 	    
+    
+    
     @Override
+	public int idCheck(String id) throws Exception {
+    	return sqlSession.selectOne(Namespace+".idCheck",id);
+	}
+
+
+	@Override
+	public Member getInfo(String id) throws Exception {
+    	return sqlSession.selectOne(Namespace+".loginMember",id);
+	}
+
+
+	@Override
     public List<Member> selectMembers() throws Exception {
  
         return sqlSession.selectList(Namespace+".selectMembers");

@@ -17,4 +17,6 @@ public interface MemberDao {
 	
 	public List<Member> selectMembers() throws Exception;
 	public Member login(String id) throws Exception;
+	public Member getInfo(String id) throws Exception;
+	public int idCheck(String id) throws Exception;
 }
