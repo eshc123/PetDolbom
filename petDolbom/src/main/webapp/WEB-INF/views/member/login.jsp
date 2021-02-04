@@ -55,16 +55,17 @@ The above copyright notice and this permission notice shall be included in all c
           <div class="col-lg-4 col-md-6 mx-auto">
             <div class="card card-login">
               <form class="form" action="${cp}/member/login" method="post">
-                <div class="card-header card-header-primary text-center">
+                <div class="card-header card-header-success text-center">
                   <h4 class="card-title" style="font-family: godik;">애완동물 돌봄 서비스</h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body has-success">
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
                         <i class="material-icons">face</i>
                       </span>
                     </div>
+              
                     <input type="text" name="id" class="form-control" style="font-family: godik;" placeholder="아이디" required>
                   </div>
                   <!-- <div class="input-group">
@@ -92,8 +93,8 @@ The above copyright notice and this permission notice shall be included in all c
                   <a href="javascript:;" class="btn btn-primary btn-link btn-wd btn-lg">Get Started</a>
                 </div> -->
                 <div class="footer text-center" style="margin-top: 40px; margin-bottom: 40px;">
-               	<button class="btn btn-primary" type="submit" style="font-family: godik; margin-right:20px;">로그인</button>
-           		<a href="${cp}/member/register"><button class="btn btn-primary" type=button style="font-family: godik; margin-left:20px;">회원가입</button></a>
+               	<button class="btn btn-success" type="submit" style="font-family: godik; margin-right:20px;">로그인</button>
+           		<a href="${cp}/member/register"><button class="btn btn-success" type=button style="font-family: godik; margin-left:20px;">회원가입</button></a>
                 </div>
                	 </form>
            		

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import com.eshc.petdolbom.member.Member;
 import com.eshc.petdolbom.pet.Pet;
+import com.eshc.petdolbom.pet.PetVO;
 
 public interface MemberService {
 	void createMember(Member member);
@@ -22,4 +23,6 @@ public interface MemberService {
 	public boolean loginMember(Member member,HttpSession session) throws Exception;
 	public Member getInfo(HttpSession session) throws Exception;
 	public int idCheck(String id) throws Exception;
+	public void addPet(Pet pet) throws Exception;
+	public List<PetVO> selectPets(String ownerId) throws Exception;
 }

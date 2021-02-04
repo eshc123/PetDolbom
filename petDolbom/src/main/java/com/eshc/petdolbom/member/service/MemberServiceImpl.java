@@ -11,6 +11,7 @@ import com.eshc.petdolbom.member.Member;
 
 import com.eshc.petdolbom.member.dao.MemberDaoImpl;
 import com.eshc.petdolbom.pet.Pet;
+import com.eshc.petdolbom.pet.PetVO;
 
 
 @Service
@@ -21,6 +22,16 @@ public class MemberServiceImpl implements MemberService{
 	
 	
 	
+	@Override
+	public List<PetVO> selectPets(String ownerId) throws Exception {
+		return memberDao.selectPets(ownerId);
+	}
+
+	@Override
+	public void addPet(Pet pet) throws Exception {
+		memberDao.addPet(pet);
+	}
+
 	@Override
 	public int idCheck(String id) throws Exception {
 		return memberDao.idCheck(id);
@@ -33,10 +44,12 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public boolean loginMember(Member member,HttpSession session) throws Exception  {
-		boolean result =memberDao.login(member.getId()).getPassword().equals(member.getPassword());
-		if(memberDao.login(member.getId()).getPassword().equals(member.getPassword())){
-			session.setAttribute("memberId", member.getId());
-			session.setAttribute("memberPw", member.getPassword());
+		boolean result =memberDao.selectMemberById(member.getId()).getPassword().equals(member.getPassword());
+		if(memberDao.selectMemberById(member.getId()).getPassword().equals(member.getPassword())){
+			Member loginMember = memberDao.selectMemberById(member.getId());
+			session.setAttribute("memberId", loginMember.getId());
+			session.setAttribute("memberPw", loginMember.getPassword());
+			session.setAttribute("memberStatus", loginMember.getDolbomi_status());
 		}
 		return result;
 	}

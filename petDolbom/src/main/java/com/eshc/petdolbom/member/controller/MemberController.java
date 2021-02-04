@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.eshc.petdolbom.dolbom.DolbomTime;
 import com.eshc.petdolbom.member.Member;
 import com.eshc.petdolbom.member.service.MemberService;
 import com.eshc.petdolbom.pet.Pet;
+import com.eshc.petdolbom.pet.PetVO;
 
 @Controller
 @RequestMapping("/member")
@@ -229,10 +231,13 @@ public class MemberController {
 		return "/member/removeOk";
 	}
 	@RequestMapping(value = "/pet", method = RequestMethod.GET)
-	public String infoPet(Member member, HttpServletRequest request) {
-		
-		
-		return "/member/removeOk";
+	public ModelAndView infoPet(HttpSession session)  throws Exception {
+		List<PetVO> petList = service.selectPets(session.getAttribute("memberId").toString());
+		System.out.println(session.getId());
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("petList",petList);
+		mav.setViewName("/member/pet");
+		return mav;
 	}
 	@RequestMapping(value = "/addPet", method = RequestMethod.GET)
 	public String formAddPet(Pet pet, HttpServletRequest request) {
@@ -240,11 +245,11 @@ public class MemberController {
 		
 		return "/member/removeOk";
 	}	
-	@RequestMapping(value = "/addPet", method = RequestMethod.POST)
-	public String submitAddPet(Pet pet, HttpServletRequest request) {
-		
-		
-		return "/member/removeOk";
+	@RequestMapping(value = "/pet", method = RequestMethod.POST)
+	public String submitAddPet(Pet pet,HttpSession session) throws Exception {
+		pet.setOwnerId(session.getAttribute("memberId").toString());
+		service.addPet(pet);
+		return "redirect:/member/pet";
 	}
 	@RequestMapping(value = "/updatePet", method = RequestMethod.GET)
 	public String formUpdatePet(Pet pet, HttpServletRequest request) {

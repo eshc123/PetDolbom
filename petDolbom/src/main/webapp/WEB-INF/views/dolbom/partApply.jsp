@@ -71,7 +71,7 @@ The above copyright notice and this permission notice shall be included in all c
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/dolbom/dolbomi" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">child_friendly</i> 돌보미신청
               </a>
             </li>
@@ -95,16 +95,51 @@ The above copyright notice and this permission notice shall be included in all c
     <div class="profile-content">
       <div class="container">
         <div class="row">
-           <h2 class="font-gd" style="margin-top: 20px;">돌봄 서비스 신청서 작성</h2>
+           <h2 class="font-gd" style="margin-top: 20px;">시간제 돌봄 서비스 신청서 작성</h2>
           <div class="col-md-12 ml-auto mr-auto">
             <div class="card card-nav-tabs">
               <div class="card-body">
-              	<h4>봉사자 정보</h4>
+              	<h3 style="font-weight: bold; margin-top:10px; margin-bottom:20px; margin-left:10px;">봉사자 정보</h3>
                   <div class="col-md-11 ml-auto mr-auto">
-                    <p class="font-gd" style="font-size: 20px">이름 : </p>
-                  	<p class="font-gd" style="font-size: 20px">지역 : </p>
-                  	<p class="font-gd" style="font-size: 20px">돌봄 가능 애완동물 : </p>
-                  	<p class="font-gd" style="font-size: 20px">서비스 종류 : </p>
+                    <div class="row">
+	                    <div class="col-2">
+	                    <p class="font-gd" style="font-size: 20px; font-weight: bold;">이름 : </p>
+	                  	</div>
+	                  	<div class="col-4">
+	                  	<p class="font-gd" style="font-size: 20px;">
+	                  	${partTime.name}
+	                  	</p>
+	                  	</div>
+                  	</div>
+                  	<div class="row">
+	                  	<div class="col-2">
+	                  	<p class="font-gd" style="font-size: 20px; font-weight: bold;">지역 : </p>
+	                  	</div>
+	                  	<div class="col-4">
+	                  	<p class="font-gd" style="font-size: 20px;">
+	                  	${partTime.address}
+	                  	</p>
+	                  	</div>
+	                  </div>
+	                <div class="row">
+	                  	<div class="col-2">
+	                  	<p class="font-gd" style="font-size: 20px; font-weight: bold;">돌봄 애완동물 : </p>
+	                  	</div>
+	                  	<div class="col-4">
+	                  	<p class="font-gd" style="font-size: 20px;">
+	                  	${pets}
+	                  	</p>
+	                  	</div>
+	                  </div>
+	                <div class="row">
+	                  	<div class="col-2">
+	                  	<p class="font-gd" style="font-size: 20px; font-weight: bold;">시간 : </p>
+	                  	</div>
+	                  	<div class="col-4">
+	                  	<p class="font-gd" style="font-size: 20px;">
+	                  	${partTime.time}</p>
+	                  	</div>
+	                  </div>
                   </div>
                 </div>
                 
@@ -112,13 +147,62 @@ The above copyright notice and this permission notice shall be included in all c
               </div>
               <div class="card card-nav-tabs">
               <div class="card-body ">
-              	<h4>신청자 정보</h4>
+              <h3 style="font-weight: bold; margin-top:10px; margin-bottom:20px; margin-left:10px;">신청자 정보</h3>
                   <div class="col-md-11 ml-auto mr-auto">
-                    <p class="font-gd" style="font-size: 20px">이름 : </p>
-                  	<p class="font-gd" style="font-size: 20px">전화번호 : </p>
-                  	<p class="font-gd" style="font-size: 20px">주소 : </p>
-                  	<p class="font-gd" style="font-size: 20px">날짜 / 시간 선택 : </p>
-                  	<p class="font-gd" style="font-size: 20px">애완동물 선택 : </p>
+                    <div class="row">
+	                    <div class="col-2">
+	                    <p class="font-gd" style="font-size: 20px; font-weight: bold;">이름 : </p>
+	                  	</div>
+	                  	<div class="col-4">
+	                  	<p class="font-gd" style="font-size: 20px;">
+	                  	${member.name}
+	                  	<p>
+	                  	</div>
+                  	</div>
+                  	<div class="row">
+	                  	<div class="col-2">
+	                  	<p class="font-gd" style="font-size: 20px; font-weight: bold;">전화번호 : </p>
+	                  	</div>
+	                  	<div class="col-4">
+	                  	<p class="font-gd" style="font-size: 20px;">
+	                  	${member.phone_num}
+	                  	<p>
+	                  	</div>
+                  	</div>
+                  	<div class="row">
+	                  	<div class="col-2">
+	                  	<p class="font-gd" style="font-size: 20px; font-weight: bold;">주소 : </p>
+	                  	</div>
+	                  	<div class="col-4">
+	                  	<p class="font-gd" style="font-size: 20px;">
+	                  	${member.address}
+	                  	<p>
+	                  	</div>
+                  	</div>
+                  	<div class="row">
+	                  	<div class="col-2">
+	                  	<p class="font-gd" style="font-size: 20px; font-weight: bold;">날짜 / 시간 선택 : </p>
+	                  	</div>
+	                  	<div class="col-4 has-success" >
+                    		<input type="text" class="form-control datetimepicker" value="2021-02-03" />
+	                  	</div>
+	                  	
+                  	</div>
+                  	<div class="row">
+                  	
+                  		<div class="col-2">
+	                  	<p class="font-gd" style="font-size: 20px; font-weight: bold;">애완동물 선택 : </p>
+	                  	</div>
+	                  	<div class="col-4">
+	                  	<select class="form-select" name="petBirth" aria-label="Default select example" style="font-family: godik; font-size:15px;">
+						  <option selected>애완동물</option>
+						  <option value="2021">2021</option>
+						  <option value="2020">2020</option>
+						  <option value="2019">2019</option>
+						</select> 
+						</div>
+                  	</div>
+                  	
                   </div>
                 </div>
               </div>
@@ -154,7 +238,7 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="<c:url value="/resources/assets/js/core/jquery.min.js" />" type="text/javascript"></script>
   <script src="<c:url value="/resources/assets/js/core/popper.min.js" />"  type="text/javascript"></script>
   <script src="<c:url value="/resources/assets/js/core/bootstrap-material-design.min.js" />"  type="text/javascript"></script>
-  <script src="<c:url value="/resources/assets/js/plugins/moment.min.js" />" ></script>
+  <script src="<c:url value="/resources/assets/js/plugins/moment-with-locales.min.js" />" ></script>
   <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
   <script src="<c:url value="/resources/assets/js/plugins/bootstrap-datetimepicker.js" />"  type="text/javascript"></script>
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
@@ -162,10 +246,11 @@ The above copyright notice and this permission notice shall be included in all c
   <!--  Google Maps Plugin    -->
   <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
   <script src="<c:url value="/resources/assets/js/material-kit.js?v=2.0.7" />"  type="text/javascript"></script>
+  
   <script>
     $(document).ready(function() {
       //init DateTimePickers
-      materialKit.initFormExtendedDatetimepickers();
+      //materialKit.initFormExtendedDatetimepickers();
 
       // Sliders Init
       materialKit.initSliders();
@@ -179,6 +264,22 @@ The above copyright notice and this permission notice shall be included in all c
         }, 1000);
       }
     }
+
+    $('.datetimepicker').datetimepicker({
+    	 icons: {
+    	        time: "fa fa-clock-o",
+    	        date: "fa fa-calendar",
+    	        up: "fa fa-chevron-up",
+    	        down: "fa fa-chevron-down",
+    	        previous: 'fa fa-chevron-left',
+    	        next: 'fa fa-chevron-right',
+    	        today: 'fa fa-screenshot',
+    	        clear: 'fa fa-trash',
+    	        close: 'fa fa-remove'
+    	      },
+    	 format:'YYYY-MM-DD',
+    	 locale:'ko'
+    });
   </script>
 </body>
 

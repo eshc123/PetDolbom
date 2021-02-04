@@ -20,6 +20,80 @@ public class DolbomServiceImpl implements DolbomService{
 	DolbomDaoImpl dolbomDao;
 	
 	@Override
+	public DolbomTime searchFullTimeById(String id) throws Exception {
+		List<String> caredList = new ArrayList<>();
+		for(int j=0;j<dolbomDao.searchFullTimeById(id).getCared_pet().split(",").length;j++) {
+			caredList.add(dolbomDao.searchFullTimeById(id).getCared_pet().split(",")[j]);
+		}
+		return new DolbomTime(dolbomDao.searchFullTimeById(id).getFull_service_idx(),
+				dolbomDao.searchFullTimeById(id).getMember_id(),
+				caredList,
+				"09:00~18:00",
+				"종일",
+				dolbomDao.searchFullTimeById(id).getName(),
+				dolbomDao.searchFullTimeById(id).getAddress());
+	}
+	@Override
+	public DolbomTime searchPartTimeById(String id) throws Exception {
+		List<String> caredList = new ArrayList<>();
+		for(int j=0;j<dolbomDao.searchPartTimeById(id).getCared_pet().split(",").length;j++) {
+			caredList.add(dolbomDao.searchPartTimeById(id).getCared_pet().split(",")[j]);
+		}
+		return new DolbomTime(dolbomDao.searchPartTimeById(id).getPart_service_idx(),
+				dolbomDao.searchPartTimeById(id).getMember_id(),
+				caredList,
+				dolbomDao.searchPartTimeById(id).getStart_time()+"~"+dolbomDao.searchPartTimeById(id).getEnd_time(),
+				"시간제",
+				dolbomDao.searchPartTimeById(id).getName(),
+				dolbomDao.searchPartTimeById(id).getAddress());
+	}
+	@Override
+	public List<DolbomTime> searchRegionDolbomTime(String [] regions) throws Exception {
+		
+		List<DolbomTime> dolbomTimeList=  new ArrayList<>();
+		for(int k=0;k<regions.length;k++) {
+			
+			for(int i=0;i<dolbomDao.searchRegionPartTime("서울시 "+regions[k].trim()).size();i++) {
+				List<String> caredList = new ArrayList<>();
+				for(int j=0;j<dolbomDao.searchRegionPartTime("서울시 "+regions[k].trim()).get(i).getCared_pet().split(",").length;j++) {
+					caredList.add(dolbomDao.searchRegionPartTime("서울시 "+regions[k].trim()).get(i).getCared_pet().split(",")[j]);
+				}
+				dolbomTimeList.add(new DolbomTime(dolbomDao.searchRegionPartTime("서울시 "+regions[k].trim()).get(i).getPart_service_idx(),
+						dolbomDao.searchRegionPartTime("서울시 "+regions[k].trim()).get(i).getMember_id(),
+						caredList,
+						dolbomDao.searchRegionPartTime("서울시 "+regions[k].trim()).get(i).getStart_time()+"~"+dolbomDao.searchRegionPartTime("서울시 "+regions[k].trim()).get(i).getEnd_time(),
+						"시간제",
+						dolbomDao.searchRegionPartTime("서울시 "+regions[k].trim()).get(i).getName(),
+						dolbomDao.searchRegionPartTime("서울시 "+regions[k].trim()).get(i).getAddress()));
+			}
+			for(int i=0;i<dolbomDao.searchRegionFullTime("서울시 "+regions[k].trim()).size();i++) {
+				List<String> caredList = new ArrayList<>();
+				for(int j=0;j<dolbomDao.searchRegionFullTime("서울시 "+regions[k].trim()).get(i).getCared_pet().split(",").length;j++) {
+					caredList.add(dolbomDao.searchRegionFullTime("서울시 "+regions[k].trim()).get(i).getCared_pet().split(",")[j]);
+				}
+				dolbomTimeList.add(new DolbomTime(dolbomDao.searchRegionFullTime("서울시 "+regions[k].trim()).get(i).getFull_service_idx(),
+						dolbomDao.searchRegionFullTime("서울시 "+regions[k].trim()).get(i).getMember_id(),
+						caredList,
+						"09:00~18:00",
+						"종일",
+						dolbomDao.searchRegionFullTime("서울시 "+regions[k].trim()).get(i).getName(),
+						dolbomDao.searchRegionFullTime("서울시 "+regions[k].trim()).get(i).getAddress()));
+			}
+		}
+		//dolbomDao.searchFullTime();
+		return dolbomTimeList;
+	}
+	@Override
+	public List<FullTime> searchRegionFullTime() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<PartTime> searchRegionPartTime() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
 	public List<DolbomTime> searchDolbomTime() throws Exception {
 		List<DolbomTime> dolbomTimeList=  new ArrayList<>();
 		for(int i=0;i<dolbomDao.searchPartTime().size();i++) {

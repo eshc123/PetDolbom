@@ -61,7 +61,7 @@ The above copyright notice and this permission notice shall be included in all c
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/dolbom/dolbomi" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">child_friendly</i> 돌보미신청
               </a>
             </li>

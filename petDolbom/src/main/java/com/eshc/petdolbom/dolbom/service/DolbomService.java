@@ -31,6 +31,10 @@ public interface DolbomService {
 	
 	public List<FullTime> searchFullTime() throws Exception;
 	public List<PartTime> searchPartTime() throws Exception;
-	
+	public DolbomTime searchFullTimeById(String id) throws Exception;
+	public DolbomTime searchPartTimeById(String id) throws Exception;
+	public List<FullTime> searchRegionFullTime() throws Exception;
+	public List<PartTime> searchRegionPartTime() throws Exception;
 	public List<DolbomTime> searchDolbomTime() throws Exception;
+	public List<DolbomTime> searchRegionDolbomTime(String [] regions) throws Exception;
 }

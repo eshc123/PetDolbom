@@ -8,8 +8,8 @@
  <select id="selectFullTimeDolbom" resultType="fullTimeVO">
 <![CDATA[
 SELECT sft.full_service_idx,sft.member_id,sft.cared_pet,sft.full_service_status,m.name,m.address
-FROM service_full_time as sft , member as m  
-WHERE sft.full_service_status = #{full_service_status} and sft.member_id =  m.id  
+FROM service_full_time as sft join member as m  on sft.member_id =  m.id 
+WHERE sft.full_service_status = #{full_service_status} 
 ]]> 
     </select>
  <select id="selectPartTimeDolbom" resultType="partTimeVO">
@@ -17,6 +17,37 @@ WHERE sft.full_service_status = #{full_service_status} and sft.member_id =  m.id
 SELECT spt.part_service_idx,spt.member_id,spt.cared_pet,spt.start_time,spt.end_time,spt.part_service_status,m.name,m.address
 FROM service_part_time as spt join member as m on spt.member_id =  m.id  
 WHERE spt.part_service_status = #{part_service_status}
+]]>
+    </select>
+    
+     <select id="selectRegionFullTimeDolbom" parameterType="java.util.Map" resultType="fullTimeVO">
+<![CDATA[
+SELECT sft.full_service_idx,sft.member_id,sft.cared_pet,sft.full_service_status,m.name,m.address
+FROM service_full_time as sft join member as m  on sft.member_id =  m.id
+WHERE sft.full_service_status = #{full_service_status} and m.address = #{address}
+]]> 
+    </select>
+ <select id="selectRegionPartTimeDolbom" parameterType="java.util.Map" resultType="partTimeVO">
+ <![CDATA[        
+SELECT spt.part_service_idx,spt.member_id,spt.cared_pet,spt.start_time,spt.end_time,spt.part_service_status,m.name,m.address
+FROM service_part_time as spt join member as m on spt.member_id =  m.id  
+WHERE spt.part_service_status = #{part_service_status} and m.address = #{address}
+]]>
+    </select>
+    
+    
+     <select id="selectFullTimeDolbomById" resultType="fullTimeVO">
+<![CDATA[
+SELECT sft.full_service_idx,sft.member_id,sft.cared_pet,sft.full_service_status,m.name,m.address
+FROM service_full_time as sft join member as m  on sft.member_id =  m.id 
+WHERE m.id = #{id} 
+]]> 
+    </select>
+ <select id="selectPartTimeDolbomById" resultType="partTimeVO">
+ <![CDATA[        
+SELECT spt.part_service_idx,spt.member_id,spt.cared_pet,spt.start_time,spt.end_time,spt.part_service_status,m.name,m.address
+FROM service_part_time as spt join member as m on spt.member_id =  m.id  
+WHERE m.id = #{id}
 ]]>
     </select>
 </mapper>

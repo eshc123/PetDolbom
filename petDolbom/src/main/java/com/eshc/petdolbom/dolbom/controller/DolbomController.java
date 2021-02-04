@@ -11,12 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.eshc.petdolbom.dolbom.DolbomTime;
 import com.eshc.petdolbom.dolbom.FullTime;
 import com.eshc.petdolbom.dolbom.service.DolbomService;
 import com.eshc.petdolbom.member.Member;
+import com.eshc.petdolbom.member.service.MemberService;
 
 @Controller
 @RequestMapping("/dolbom")
@@ -24,6 +27,9 @@ public class DolbomController {
 	
 	@Autowired
 	DolbomService dolbomService;
+	
+	@Autowired
+	MemberService memberService;
 	
 	@ModelAttribute("cp")
 	public String getContextPath(HttpServletRequest request) {
@@ -40,19 +46,51 @@ public class DolbomController {
 		return "/dolbom/search";
 	}
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public String searchDolbom() {
-
-		return "";
+	public ModelAndView searchDolbom(HttpServletRequest request)  throws Exception {
+		//request.getParameter("region")
+		ModelAndView mav = new ModelAndView();
+		String [] regions = request.getParameterValues("region");
+		List<DolbomTime> dolbomTimeList =
+		dolbomService.searchRegionDolbomTime(regions);		 
+		mav.addObject("dolbomServiceList",dolbomTimeList);
+		//mav.addAttribute();
+		 
+		return mav;
 	}
 	@RequestMapping(value = "/getReserv", method = RequestMethod.GET)
 	public String getReservations() {
 
-		return "";
+		return "/dolbom/calendar";
 	}
-	@RequestMapping(value = "/apply", method = RequestMethod.GET)
-	public String applyPage() {
-
-		return "/dolbom/apply";
+	@RequestMapping(value = "/dolbomi", method = RequestMethod.GET)
+	public String dolbomiPage(HttpSession session) {
+		if((int)session.getAttribute("memberStatus")>0) {
+			return "/dolbom/dolbomiManage";
+		}
+		else return "/dolbom/dolbomi";
+	}
+	@RequestMapping(value = "/apply", method = RequestMethod.GET) // 신청자 정보는 session, 봉사자 정보느?
+	@ResponseBody
+	public ModelAndView applyPage(String id,String status,HttpSession session) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		System.out.println(id+status);
+		if(status.equals("시간제")) {
+			mav.setViewName("dolbom/partApply");
+			mav.addObject("partTime",dolbomService.searchPartTimeById(id));
+			mav.addObject("pets",dolbomService.searchPartTimeById(id).getDolbomTimeCaredPet().toString().replace("[", "").replace("]",""));
+			mav.addObject("member",memberService.getInfo(session));
+			return mav;
+		}
+		else {
+			mav.setViewName("dolbom/fullApply");
+			mav.addObject("fullTime",dolbomService.searchFullTimeById(id));
+			mav.addObject("pets",dolbomService.searchFullTimeById(id).getDolbomTimeCaredPet().toString().replace("[", "").replace("]",""));
+			mav.addObject("member",memberService.getInfo(session));
+			return mav;
+		}
+		//System.out.println(id+status);
+		//mav.addObject("dolbomi", )
+		
 	}
 	@RequestMapping(value = "/detail", method = RequestMethod.POST)
 	public String applyDolbom() {

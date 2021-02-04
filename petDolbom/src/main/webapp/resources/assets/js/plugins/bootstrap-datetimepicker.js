@@ -46,8 +46,8 @@
 
 ! function(e) {
   "use strict";
-  if ("function" == typeof define && define.amd) define(["jquery", "moment"], e);
-  else if ("object" == typeof exports) module.exports = e(require("jquery"), require("moment"));
+  if ("function" == typeof define && define.amd) define(["jquery", "moment-with-locales"], e);
+  else if ("object" == typeof exports) module.exports = e(require("jquery"), require("moment-with-locales"));
   else {
     if ("undefined" == typeof jQuery) throw "bootstrap-datetimepicker requires jQuery to be loaded first";
     if ("undefined" == typeof moment) throw "bootstrap-datetimepicker requires Moment.js to be loaded first";

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.eshc.petdolbom.member.Member;
 import com.eshc.petdolbom.pet.Pet;
+import com.eshc.petdolbom.pet.PetVO;
 
 @Repository
 public class MemberDaoImpl implements MemberDao{
@@ -21,6 +22,18 @@ public class MemberDaoImpl implements MemberDao{
     
     
     @Override
+	public List<PetVO> selectPets(String ownerId) throws Exception {
+    	return sqlSession.selectList(Namespace+".getPets",ownerId);
+	}
+
+
+	@Override
+	public void addPet(Pet pet) throws Exception {
+    	sqlSession.insert(Namespace+".addPet",pet);
+	}
+
+
+	@Override
 	public int idCheck(String id) throws Exception {
     	return sqlSession.selectOne(Namespace+".idCheck",id);
 	}
@@ -28,7 +41,7 @@ public class MemberDaoImpl implements MemberDao{
 
 	@Override
 	public Member getInfo(String id) throws Exception {
-    	return sqlSession.selectOne(Namespace+".loginMember",id);
+    	return sqlSession.selectOne(Namespace+".selectMemberById",id);
 	}
 
 
@@ -40,8 +53,8 @@ public class MemberDaoImpl implements MemberDao{
     
 	
 	@Override
-	public Member login(String id) throws Exception {
-		 return sqlSession.selectOne(Namespace+".loginMember",id);
+	public Member selectMemberById(String id) throws Exception {
+		 return sqlSession.selectOne(Namespace+".selectMemberById",id);
 	}
 
 

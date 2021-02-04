@@ -15,6 +15,7 @@
 
  */
 
+
 var big_image;
 
 $(document).ready(function() {
@@ -116,7 +117,9 @@ materialKit = {
         today: 'fa fa-screenshot',
         clear: 'fa fa-trash',
         close: 'fa fa-remove'
-      }
+      },
+      format:'YYYY-MM-DD',
+ 	 locale:'ko'
     });
   },
 

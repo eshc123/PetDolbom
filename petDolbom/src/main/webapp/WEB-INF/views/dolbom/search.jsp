@@ -33,7 +33,11 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="${cp}/resources/assets/demo/demo.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link href='${cp}/resources/assets/lib/main.css' rel='stylesheet' />
+<script src='${cp}/resources/assets/lib/main.js'></script>
+<script src='${cp}/resources/assets/lib/locales-all.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
 <style>
   .btn-width{
     width: 90px;
@@ -41,6 +45,7 @@ The above copyright notice and this permission notice shall be included in all c
   .btn-width-long{
     width: 180px;
   }
+
 </style>
 </head>
  <body class="profile-page sidebar-collapse">
@@ -71,7 +76,7 @@ The above copyright notice and this permission notice shall be included in all c
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/dolbom/dolbomi" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">child_friendly</i> 돌보미신청
               </a>
             </li>
@@ -98,8 +103,9 @@ The above copyright notice and this permission notice shall be included in all c
           <div class="col-md-12 ml-auto mr-auto">
             <div class="card card-nav-tabs">
               <div class="card-body ">
+              <form action="${cp}/dolbom/search" method="post">
                   <div class="col-md-11 ml-auto mr-auto">
-                    <input type="checkbox" name="region" class="btn-check" id="check_all" autocomplete="off" value="전체" checked>
+                    <input type="checkbox" name="all_region" class="btn-check" id="check_all" autocomplete="off" value="전체" checked>
                     <label class="btn btn-outline-success btn-width" for="check_all">전체</label>
                     <input type="checkbox" name="region" class="btn-check" id="check_gangnam" autocomplete="off" value="강남구">
                     <label class="btn btn-outline-success btn-width" for="check_gangnam" >강남구</label>
@@ -111,45 +117,45 @@ The above copyright notice and this permission notice shall be included in all c
                     <label class="btn btn-outline-success btn-width" for="check_gangseo" >강서구</label>
                     <input type="checkbox" name="region" class="btn-check" id="check_gwanak" autocomplete="off" value="관악구">
                     <label class="btn btn-outline-success btn-width" for="check_gwanak" >관악구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_gwangjin" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_gwangjin" autocomplete="off" value="광진구">
                     <label class="btn btn-outline-success btn-width" for="check_gwangjin" >광진구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_gooro" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_gooro" autocomplete="off" value="구로구">
                     <label class="btn btn-outline-success btn-width" for="check_gooro" >구로구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_geumcheon" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_geumcheon" autocomplete="off" value="금천구">
                     <label class="btn btn-outline-success btn-width" for="check_geumcheon" >금천구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_nowon" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_nowon" autocomplete="off" value="노원구">
                     <label class="btn btn-outline-success btn-width" for="check_nowon" >노원구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_dobong" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_dobong" autocomplete="off" value="도봉구">
                     <label class="btn btn-outline-success btn-width" for="check_dobong" >도봉구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_dongdaemoon" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_dongdaemoon" autocomplete="off" value="동대문구구">
                     <label class="btn btn-outline-success btn-width" for="check_dongdaemoon" >동대문구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_dongjak" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_dongjak" autocomplete="off" value="동작구">
                     <label class="btn btn-outline-success btn-width" for="check_dongjak" >동작구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_mapo" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_mapo" autocomplete="off" value="마포구">
                     <label class="btn btn-outline-success btn-width" for="check_mapo">마포구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_seodaemoon" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_seodaemoon" autocomplete="off" value="서대문구">
                     <label class="btn btn-outline-success btn-width" for="check_seodaemoon" >서대문구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_seocho" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_seocho" autocomplete="off" value="서초구">
                     <label class="btn btn-outline-success btn-width" for="check_seocho" >서초구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_seongdong" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_seongdong" autocomplete="off" value="성동구">
                     <label class="btn btn-outline-success btn-width" for="check_seongdong" >성동구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_seongbuk" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_seongbuk" autocomplete="off" value="성북구">
                     <label class="btn btn-outline-success btn-width" for="check_seongbuk" >성북구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_songpa" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_songpa" autocomplete="off" value="송파구">
                     <label class="btn btn-outline-success btn-width" for="check_songpa" >송파구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_yangcheon" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_yangcheon" autocomplete="off" value="양천구">
                     <label class="btn btn-outline-success btn-width" for="check_yangcheon" >양천구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_yeongdeungpo" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_yeongdeungpo" autocomplete="off" value="영등포구">
                     <label class="btn btn-outline-success btn-width" for="check_yeongdeungpo" >영등포구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_yongsan" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_yongsan" autocomplete="off" value="용산구">
                     <label class="btn btn-outline-success btn-width" for="check_yongsan" >용산구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_eunpyeong" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_eunpyeong" autocomplete="off" value="은평구">
                     <label class="btn btn-outline-success btn-width" for="check_eunpyeong" >은평구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_jongro" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_jongro" autocomplete="off" value="종로구">
                     <label class="btn btn-outline-success btn-width" for="check_jongro" >종로구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_joong" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_joong" autocomplete="off" value="중구">
                     <label class="btn btn-outline-success btn-width" for="check_joong" >중구</label>
-                    <input type="checkbox" name="region" class="btn-check" id="check_joongrang" autocomplete="off">
+                    <input type="checkbox" name="region" class="btn-check" id="check_joongrang" autocomplete="off" value="중랑구">
                     <label class="btn btn-outline-success btn-width" for="check_joongrang" >중랑구</label>
                     <hr>
                     <input type="checkbox" class="btn-check" id="check_all_day" autocomplete="off" checked>
@@ -158,15 +164,19 @@ The above copyright notice and this permission notice shall be included in all c
                     <label class="btn btn-outline-success btn-width-long" for="check_part_time" >시간제 돌봄 서비스</label>
                   </div>
                   <div class="col-md-11 ml-auto mr-auto text-center" >
-                    <button class="btn btn-secondary btn-width" onclick="value_check()">검색</button>
+                  <button class="btn btn-secondary btn-width" type="submit" >검색</button>
+                   <!--  <button class="btn btn-secondary btn-width" type="submit" onclick="value_check()">검색</button> -->
                   </div>
-                      
+                 </form>
   
                 </div>
               </div>
             </div>
+          
             <c:forEach items="${dolbomServiceList}" var="dolbomService">
-            <div class="col-md-3">
+           
+            <div class="col-md-3" id="init">
+            
               <div class="card">
                 <div class="card-body"> 
                   <p class="font-gd" style="font-size: 20px">이름 : ${dolbomService.name}</p>
@@ -186,12 +196,14 @@ The above copyright notice and this permission notice shall be included in all c
                   <p class="font-gd" style="font-size: 16px">${dolbomService.time}</p> --%>
                   </div>
                   <div class="col-md-11 ml-auto mr-auto" style="margin-top: 10px;">
-                    <a href="${cp}/dolbom/search"><button class="btn btn-secondary btn-width font-gd">예약현황</button></a>
-                    <a href="${cp}/dolbom/apply"><button class="btn btn-secondary btn-width font-gd">신청</button></a>
+                   <button class="btn btn-secondary btn-width font-gd" data-toggle="modal" data-target="#myModal">예약현황</button>
+                    <a href="${cp}/dolbom/apply?id=${dolbomService.memId}&status=${dolbomService.dolbomTimeStatus}"><button class="btn btn-secondary btn-width font-gd">신청</button></a>
                   </div>
                 </div>
               </div>
+
             </div>
+            
            </c:forEach>
            
           </div>
@@ -201,6 +213,8 @@ The above copyright notice and this permission notice shall be included in all c
         
         
         </div>
+        
+      
 <footer class="footer footer-default" >
   <div class="container">
     <nav class="float-left">
@@ -221,6 +235,59 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
   </div>
 </footer>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="material-icons">clear</i>
+          </button>
+        </div>
+        <div class="modal-body">
+         <div id='wrap'>
+
+    <div id='external-events'>
+      <h4>Draggable Events</h4>
+
+      <div id='external-events-list'>
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+          <div class='fc-event-main'>My Event 1</div>
+        </div>
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+          <div class='fc-event-main'>My Event 2</div>
+        </div>
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+          <div class='fc-event-main'>My Event 3</div>
+        </div>
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+          <div class='fc-event-main'>My Event 4</div>
+        </div>
+        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+          <div class='fc-event-main'>My Event 5</div>
+        </div>
+      </div>
+
+      <p>
+        <input type='checkbox' id='drop-remove' />
+        <label for='drop-remove'>remove after drop</label>
+      </p>
+    </div>
+
+    <div id='calendar-wrap'>
+      <div id='calendar'></div>
+    </div>
+
+  </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link">Nice Button</button>
+          <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!--   Core JS Files   -->
   <script src="<c:url value="/resources/assets/js/core/jquery.min.js" />" type="text/javascript"></script>
   <script src="<c:url value="/resources/assets/js/core/popper.min.js" />"  type="text/javascript"></script>
@@ -259,9 +326,102 @@ The above copyright notice and this permission notice shall be included in all c
             }
             select_obj += $(this).val();
         });
- 
+          /* $.ajax({
+				url:'region?address='+select_obj,
+				type:'get',
+				success:function(data){
+					 alert(select_obj);
+					
+				}
+			}) */	  
         alert(select_obj);
     }
+    $(document).ready(function(){
+        //최상단 체크박스 클릭
+        $("#check_all").click(function(){
+            //클릭되었으면
+            if($("#check_all").prop("checked")){
+                //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+                $("input[name=region]").prop("checked",false);
+                //클릭이 안되있으면
+            }
+            /* else{
+                //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+                $("input[name=region]").prop("checked",false);
+            } */
+        })
+    })
+$(document).ready(function(){
+        //최상단 체크박스 클릭
+        $("input[name=region]").click(function(){
+            //클릭되었으면
+            if($("#check_all").prop("checked")){
+                //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+                $("#check_all").prop("checked",false);
+                //클릭이 안되있으면
+            }
+            /* else{
+                //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+                $("input[name=region]").prop("checked",false);
+            } */
+        })
+    })
+    
+    
+    
+  document.addEventListener('DOMContentLoaded', function() {
+
+    /* initialize the external events
+    -----------------------------------------------------------------*/
+
+    var containerEl = document.getElementById('external-events-list');
+    new FullCalendar.Draggable(containerEl, {
+      itemSelector: '.fc-event',
+      eventData: function(eventEl) {
+        return {
+          title: eventEl.innerText.trim()
+        }
+      }
+    });
+
+    //// the individual way to do it
+    // var containerEl = document.getElementById('external-events-list');
+    // var eventEls = Array.prototype.slice.call(
+    //   containerEl.querySelectorAll('.fc-event')
+    // );
+    // eventEls.forEach(function(eventEl) {
+    //   new FullCalendar.Draggable(eventEl, {
+    //     eventData: {
+    //       title: eventEl.innerText.trim(),
+    //     }
+    //   });
+    // });
+
+    /* initialize the calendar
+    -----------------------------------------------------------------*/
+
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      },
+      editable: true,
+      droppable: true, // this allows things to be dropped onto the calendar
+      drop: function(arg) {
+        // is the "remove after drop" checkbox checked?
+        if (document.getElementById('drop-remove').checked) {
+          // if so, remove the element from the "Draggable Events" list
+          arg.draggedEl.parentNode.removeChild(arg.draggedEl);
+        }
+      }
+    });
+    calendar.render();
+
+  });
+
+    
   </script>
 </body>
 

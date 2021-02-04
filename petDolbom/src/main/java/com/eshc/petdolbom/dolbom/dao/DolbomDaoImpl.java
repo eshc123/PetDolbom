@@ -1,6 +1,8 @@
 package com.eshc.petdolbom.dolbom.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -22,6 +24,34 @@ public class DolbomDaoImpl implements DolbomDao{
     private static final String Namespace = "com.eshc.mapper.dolbomMapper";
 	    
 	
+	@Override
+	public FullTimeVO searchFullTimeById(String id) throws Exception {
+		return sqlSession.selectOne(Namespace+".selectFullTimeDolbomById",id);
+	}
+
+	@Override
+	public PartTimeVO searchPartTimeById(String id) throws Exception {
+		return sqlSession.selectOne(Namespace+".selectPartTimeDolbomById",id);
+	}
+
+	@Override
+	public List<FullTimeVO> searchRegionFullTime(String address) throws Exception {
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("full_service_status", 1);
+		parameters.put("address", address);
+
+		return sqlSession.selectList(Namespace+".selectRegionFullTimeDolbom",parameters);
+	}
+
+	@Override
+	public List<PartTimeVO> searchRegionPartTime(String address) throws Exception {
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("part_service_status", 1);
+		parameters.put("address", address);
+
+		return sqlSession.selectList(Namespace+".selectRegionPartTimeDolbom",parameters);
+	}
+
 	@Override
 	public List<PartTimeVO> searchPartTime() throws Exception {
 		return sqlSession.selectList(Namespace+".selectPartTimeDolbom",1);

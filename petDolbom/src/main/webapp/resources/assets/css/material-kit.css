@@ -17,6 +17,12 @@
 .font-gd {
   font-family: godik;
 }
+.font-gd-add {
+  font-family: godik;
+  color:#eeeeee;
+  font-weight:bold;
+  font-size:100px;
+}
 .alert-text {
   font-family: godik;
   color: #cccccc;
@@ -5805,7 +5811,10 @@ button.close {
   align-items: center;
   min-height: calc(100% - (0.5rem * 2));
 }
-
+.modal-dialog-centered-pet {
+  display: flex;
+  align-items: center;
+}
 .modal-content {
   position: relative;
   display: flex;
@@ -17364,7 +17373,11 @@ footer .pull-center {
 .card-carousel {
   overflow: hidden;
 }
+.card-pet {
 
+  margin-top: -40px;
+  margin-bottom: 15px;
+}
 .card-login .card-header {
   margin-left: 20px;
   margin-right: 20px;

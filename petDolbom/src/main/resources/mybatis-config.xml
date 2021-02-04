@@ -7,6 +7,8 @@
             <typeAlias type="com.eshc.petdolbom.member.Member" alias="memberVO"/>
             <typeAlias type="com.eshc.petdolbom.dolbom.FullTimeVO" alias="fullTimeVO"/>
             <typeAlias type="com.eshc.petdolbom.dolbom.PartTimeVO" alias="partTimeVO"/>
+            <typeAlias type="com.eshc.petdolbom.pet.PetVO" alias="petVO"/>
+
         </typeAliases>
         
     </configuration>

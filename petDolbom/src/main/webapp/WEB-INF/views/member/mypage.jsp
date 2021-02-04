@@ -71,7 +71,7 @@ The above copyright notice and this permission notice shall be included in all c
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" style="font-family: godik;">
+              <a href="${cp}/dolbom/dolbomi" class="nav-link" style="font-family: godik;">
                   <i class="material-icons">child_friendly</i> 돌보미신청
               </a>
             </li>
@@ -109,7 +109,7 @@ The above copyright notice and this permission notice shall be included in all c
               	회원정보
             </a>
             <div class="dropdown-menu dropdown-with-icons">
-              <a href="${cp}/center/training" class="dropdown-item font-gd">
+              <a href="${cp}/member/pet" class="dropdown-item font-gd">
                 	애완동물 관리
               </a>
               <a href="${cp}/center/longPeriod" class="dropdown-item font-gd">

@@ -32,4 +32,8 @@ public interface DolbomDao {
 	
 	public List<FullTimeVO> searchFullTime() throws Exception;
 	public List<PartTimeVO> searchPartTime() throws Exception;
+	public FullTimeVO searchFullTimeById(String id) throws Exception;
+	public PartTimeVO searchPartTimeById(String id) throws Exception;
+	public List<FullTimeVO> searchRegionFullTime(String address) throws Exception;
+	public List<PartTimeVO> searchRegionPartTime(String address) throws Exception;
 }

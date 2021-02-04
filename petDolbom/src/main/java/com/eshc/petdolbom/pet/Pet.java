@@ -4,10 +4,10 @@ public class Pet {
 	
 	private String petName;
 	private String petSpecies;
-	private int petIdx;
 	private String ownerId;
 	private String petBirth;
-	
+	private String petGender;
+	private String petComment;
 	public String getPetName() {
 		return petName;
 	}
@@ -20,12 +20,6 @@ public class Pet {
 	public void setPetSpecies(String petSpecies) {
 		this.petSpecies = petSpecies;
 	}
-	public int getPetIdx() {
-		return petIdx;
-	}
-	public void setPetIdx(int petIdx) {
-		this.petIdx = petIdx;
-	}
 	public String getOwnerId() {
 		return ownerId;
 	}
@@ -37,6 +31,18 @@ public class Pet {
 	}
 	public void setPetBirth(String petBirth) {
 		this.petBirth = petBirth;
+	}
+	public String getPetGender() {
+		return petGender;
+	}
+	public void setPetGender(String petGender) {
+		this.petGender = petGender;
+	}
+	public String getPetComment() {
+		return petComment;
+	}
+	public void setPetComment(String petComment) {
+		this.petComment = petComment;
 	}
 	
 }

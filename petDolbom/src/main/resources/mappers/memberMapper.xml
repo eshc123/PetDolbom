@@ -14,8 +14,24 @@
     <insert id="insertMember">
     insert into member(id, password,address,name,phone_num,license,dolbomi_status) 
     	values (#{id},#{password},#{address},#{name},#{phone_num},#{license},#{dolbomi_status})
-    </insert>    
-<select id="loginMember" resultType="memberVO">
+    </insert>  
+     <insert id="addPet">
+    insert into pet(ownerId, pet_name,species,birth,gender,comment) 
+    	values (#{ownerId},#{petName},#{petSpecies},#{petBirth},#{petGender},#{petComment})
+    </insert>
+    
+    <select id="getPets" resultType="petVO">
+		<![CDATA[
+		          SELECT
+		              *
+		          FROM
+		              pet
+		          WHERE
+		              ownerId = #{ownerId}       
+		      ]]>
+		</select>
+       
+<select id="selectMemberById" resultType="memberVO">
 <![CDATA[
           SELECT
               *
