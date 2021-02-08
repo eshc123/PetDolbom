@@ -2,6 +2,7 @@ package com.eshc.petdolbom.dolbom.dao;
 
 import java.util.List;
 
+import com.eshc.petdolbom.dolbom.DolbomiApplyVO;
 import com.eshc.petdolbom.dolbom.FullTime;
 import com.eshc.petdolbom.dolbom.FullTimeReservation;
 import com.eshc.petdolbom.dolbom.FullTimeVO;
@@ -10,12 +11,12 @@ import com.eshc.petdolbom.dolbom.PartTimeReservation;
 import com.eshc.petdolbom.dolbom.PartTimeVO;
 
 public interface DolbomDao {
-	int insertFullTime(FullTime fullTime);
+	void insertFullTime(String memId,String caredPet);
 	FullTime selectFullTime(FullTime fullTime);
 	int updateFullTime(FullTime fullTime);
 	int deleteFullTime(FullTime fullTime);
 	
-	int insertPartTime(PartTime partTime);
+	void insertPartTime(String memId,String caredPet,String startTime,String endTime);
 	PartTime selectPartTime(PartTime partTime);
 	int updatePartTime(PartTime partTime);
 	int deletePartTime(PartTime partTime);
@@ -36,4 +37,8 @@ public interface DolbomDao {
 	public PartTimeVO searchPartTimeById(String id) throws Exception;
 	public List<FullTimeVO> searchRegionFullTime(String address) throws Exception;
 	public List<PartTimeVO> searchRegionPartTime(String address) throws Exception;
+	public List<DolbomiApplyVO> searchFullDolbomi() throws Exception;
+	public List<DolbomiApplyVO> searchPartDolbomi() throws Exception;
+	public void updateDolbomiStatus(String memId,int status) throws Exception;
+
 }

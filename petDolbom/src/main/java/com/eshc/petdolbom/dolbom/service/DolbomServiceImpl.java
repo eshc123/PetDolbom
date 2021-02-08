@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.eshc.petdolbom.dolbom.DolbomTime;
+import com.eshc.petdolbom.dolbom.DolbomiApplyVO;
 import com.eshc.petdolbom.dolbom.FullTime;
 import com.eshc.petdolbom.dolbom.FullTimeReservation;
 import com.eshc.petdolbom.dolbom.PartTime;
@@ -19,6 +20,23 @@ public class DolbomServiceImpl implements DolbomService{
 	@Autowired
 	DolbomDaoImpl dolbomDao;
 	
+	@Override
+	public void updateDolbomiStatus(String memId,int status) throws Exception {
+		dolbomDao.updateDolbomiStatus(memId, status);
+		
+	}
+	@Override
+	public List<DolbomiApplyVO> searchFullDolbomi() throws Exception {
+		List<DolbomiApplyVO> dolbomiList = new ArrayList<>();
+		dolbomiList.addAll(dolbomDao.searchFullDolbomi());
+		return dolbomiList;
+	}
+	@Override
+	public List<DolbomiApplyVO> searchPartDolbomi() throws Exception {
+		List<DolbomiApplyVO> dolbomiList = new ArrayList<>();
+		dolbomiList.addAll(dolbomDao.searchPartDolbomi());
+		return dolbomiList;
+	}
 	@Override
 	public DolbomTime searchFullTimeById(String id) throws Exception {
 		List<String> caredList = new ArrayList<>();
@@ -159,8 +177,8 @@ public class DolbomServiceImpl implements DolbomService{
 	}
 
 	@Override
-	public void createFullTime(FullTime fullTime) {
-		// TODO Auto-generated method stub
+	public void createFullTime(String memId,String caredPet) {
+		dolbomDao.insertFullTime(memId, caredPet);
 		
 	}
 
@@ -183,9 +201,8 @@ public class DolbomServiceImpl implements DolbomService{
 	}
 
 	@Override
-	public void createPartTime(PartTime partTime) {
-		// TODO Auto-generated method stub
-		
+	public void createPartTime(String memId,String caredPet,String startTime,String endTime) {
+		dolbomDao.insertPartTime(memId, caredPet,startTime,endTime);
 	}
 
 	@Override

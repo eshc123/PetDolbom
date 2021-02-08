@@ -50,5 +50,28 @@ FROM service_part_time as spt join member as m on spt.member_id =  m.id
 WHERE m.id = #{id}
 ]]>
     </select>
+    <insert id="insertDolbomiFull">
+    insert into service_full_time(member_id, cared_pet,full_service_status) 
+    	values (#{member_id},#{cared_pet},#{full_service_status})
+    </insert>  
+    <insert id="insertDolbomiPart">
+    insert into service_part_time(member_id, cared_pet,start_time,end_time,part_service_status) 
+    	values (#{member_id},#{cared_pet},#{start_time},#{end_time},#{part_service_status})
+    </insert>  
+    <update id="updateDolbomiStatus">
+    update member
+    set dolbomi_status = #{dolbomi_status}
+    where id = #{member_id}
+    </update>
+    <select id="selectFullDolbomi" resultType="dolbomiApplyVO">
+    select m.id,m.name, m.address, f.cared_pet,m.license
+    from member as m join service_full_time as f on m.id = f.member_id
+    where m.dolbomi_status = 1
+    </select>
+    <select id="selectPartDolbomi" resultType="dolbomiApplyVO">
+    select m.id, m.name, m.address, p.cared_pet,m.license
+    from member as m join service_part_time as p on m.id = p.member_id
+    where m.dolbomi_status = 1
+    </select>
 </mapper>
 

@@ -112,7 +112,7 @@ The above copyright notice and this permission notice shall be included in all c
       <nav class="float-left">
         <ul>
           <li>
-            <a href="#">
+            <a href="${cp}/member/adminLogin">
               	관리자 로그인
             </a>
           </li>

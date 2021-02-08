@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.eshc.petdolbom.dolbom.DolbomTime;
+import com.eshc.petdolbom.dolbom.service.DolbomService;
 import com.eshc.petdolbom.member.Member;
 import com.eshc.petdolbom.member.service.MemberService;
 import com.eshc.petdolbom.pet.Pet;
@@ -29,6 +30,9 @@ public class MemberController {
 //	
 	@Autowired
 	MemberService service;
+	
+	@Autowired
+	DolbomService dolbomService;
 	
 	@ModelAttribute("cp")
 	public String getContextPath(HttpServletRequest request) {
@@ -100,39 +104,13 @@ public class MemberController {
 	public int idCheck(String id) throws Exception {
 		return service.idCheck(id);
 	}
-//	
-//	@ModelAttribute("serverTime")
-//	public String getServerTime(Locale locale) {
-//		
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//		
-//		return dateFormat.format(date);
-//	}
-//	
-//	// Join
-//	@RequestMapping("/joinForm")
-//	public String joinForm(Member member) {
-//		return "/member/joinForm";
-//	}
-//
 
-//	
-//	// Login
-//	@RequestMapping("/loginForm")
-//	public String loginForm(Member member) {
-//		return "/member/loginForm";
-//	}
-//	
-	
-//	
-	// Logout
 	@RequestMapping("/logout")
 	public String logout(Member member, HttpSession session) {
 		
 		session.invalidate();
 		
-		return "/index";
+		return "/member/login";
 	}
 //	
 //	// Modify
@@ -267,12 +245,22 @@ public class MemberController {
 	public String formAdminLogin(Member member, HttpServletRequest request) {
 		
 		
-		return "/member/removeOk";
+		return "/member/adminLogin";
 	}
 	@RequestMapping(value = "/adminLogin", method = RequestMethod.POST)
-	public String submitAdminLogin(Member member, HttpServletRequest request) {
-		
-		
-		return "/member/removeOk";
+	public ModelAndView submitAdminLogin(Member member) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		if(member.getId().equals("admin") && member.getPassword().equals("12341234")) {
+			mav.addObject("dolbomiFullList",dolbomService.searchFullDolbomi());
+			mav.addObject("dolbomiPartList",dolbomService.searchPartDolbomi());
+			mav.setViewName("/dolbom/adminDolbomSearch");
+			return mav;
+		}
+		else {
+			
+			mav.setViewName("/member/adminLogin");
+			mav.addObject("msg","다시 확인해주세요.");
+			return mav;
+		}
 	}
 }

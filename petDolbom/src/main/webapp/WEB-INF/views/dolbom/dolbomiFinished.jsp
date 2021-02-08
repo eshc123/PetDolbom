@@ -94,137 +94,65 @@ The above copyright notice and this permission notice shall be included in all c
   <div class="main main-raised"  style="padding-bottom:40px;">
     <div class="profile-content" >
       <div class="container" >
-        <div class="row" >
-        
-          <h2 class="font-gd" style="margin-top: 20px;">돌보미</h2>
-          <div class="col-md-12 ml-auto mr-auto">
-            <div class="card card-nav-tabs" >
-              <div class="card-body">
-              	<h4>돌보미란?</h4>
-                  <div class="col-md-11 ml-auto mr-auto">
-                    <p class="font-gd" style="font-size: 20px">애완동물 관리 자격증이 요구되며 종일 혹은 시간제 형식으로 애완동물 돌봄 봉사를 합니다 .</p>
-                  	
+       <div class="row" >
+       
+        <div class="col-2" style="margin-top: 20px;">
+         <h2 class="font-gd" >돌보미 관리</h2>
+         </div>
+         <div class="col-3" style="margin-top: 15px; margin-left: -20px;">
+         <ul class="navbar-nav ml-auto">
+          <li class="dropdown nav-item">
+            <a href="#" class="dropdown-toggle nav-link font-gd" data-toggle="dropdown" style="font-size:20px; color:#000000;font-weight: bold;">
+              	완료
+            </a>
+            <div class="dropdown-menu dropdown-with-icons">
+              <a href="${cp}/dolbom/dolbomi" class="dropdown-item font-gd">
+                 예약
+              </a>
+            </div>
+          </li>
+          </ul>
+		</div>
+		</div>
+		<div class="row" style="margin-top:20px;">
+		<div class="col-md-11 ml-auto mr-auto">
+		<h4 class="font-gd">예약 확정</h4>
+		<div class="col-md-3" id="init">
+            
+              <div class="card">
+                <div class="card-body"> 
+                  <p class="font-gd" style="font-size: 20px">이름 : ${dolbomService.name}</p>
+                  <p class="font-gd" style="font-size: 20px">지역 : ${dolbomService.address}</p>
+                  <p class="font-gd" style="font-size: 20px">${dolbomService.dolbomTimeStatus}(${dolbomService.time})</p>
+                  <div>
+                  <c:forEach items="${dolbomService.dolbomTimeCaredPet}" var="fs">                  
+                    <button class="btn btn-outline-success btn-fab btn-round btn-lg font-gd disabled" style="font-size: 13px;">
+                   ${fs}
+                  </button>
+                  </c:forEach>
+                  </div>
+                  <div>                  
+                    <%-- <button class="btn btn-outline-success btn-fab btn-round btn-lg font-gd disabled" style="font-size: 13px;">
+                  	${dolbomService.dolbomTimeStatus}
+                  </button>
+                  <p class="font-gd" style="font-size: 16px">${dolbomService.time}</p> --%>
+                  </div>
+                  <div class="col-md-11 ml-auto mr-auto" style="margin-top: 10px;">
+                   <button class="btn btn-secondary btn-width font-gd" data-toggle="modal" data-target="#myModal">예약현황</button>
+                    <a href="${cp}/dolbom/apply?id=${dolbomService.memId}&status=${dolbomService.dolbomTimeStatus}"><button class="btn btn-secondary btn-width font-gd">신청</button></a>
                   </div>
                 </div>
-                
-              </div> 
-              <div class="card card-nav-tabs" >  
-              <div class="card-body ">
-              	<h4>돌보미 신청하기</h4>
-                  <div class="col-md-11 ml-auto mr-auto">
-                  <form action="${cp}/dolbom/dolbomi" method="post">
-                  <div class="row" style="margin-top:20px;">
-                  <div class="col-2">
-                  <h5 class="font-gd">서비스 분류</h5>
-                  </div>
-                  	<div class="col-1" style="margin-left:20px;">
-							<input class="form-check-input" type="radio" name="radio" id="fullTime" value="fullTime">
-			                  	종일
-						</div>
-                  		<div class="col-2" style="margin-right:-20px; ">
-							<input class="form-check-input" type="radio" name="radio" id="partTime" value="partTime">
-			                  	시간제
-						</div>
-                  	</div>
-                  	<div class="row" style="margin-top:10px;">
-                  		<div class="col-2">
-		                  <h5 class="font-gd">서비스 시간</h5>
-		                  </div>
-                  		<div class="col-3">
-							<select class="form-select" name="startTime" aria-label="Default select example" style="font-family: godik; font-size:15px;" >
-							  <option selected>시작 시간</option>
-							  <option value="09:00">09:00</option>
-							  <option value="10:00">10:00</option>
-							  <option value="11:00">11:00</option>
-							  <option value="12:00">12:00</option>
-							  <option value="13:00">13:00</option>
-							  <option value="14:00">14:00</option>
-							  <option value="15:00">15:00</option>
-							  <option value="16:00">16:00</option>
-							  <option value="17:00">17:00</option>
+              </div>
 
-							</select>                    		</div>
-                  		<div class="col-3">
-							<select class="form-select" name="endTime" aria-label="Default select example" style="font-family: godik; font-size:15px;">
-							   <option selected>종료 시간</option>
-							  <option value="10:00">10:00</option>
-							  <option value="11:00">11:00</option>
-							  <option value="12:00">12:00</option>
-							  <option value="13:00">13:00</option>
-							  <option value="14:00">14:00</option>
-							  <option value="15:00">15:00</option>
-							  <option value="16:00">16:00</option>
-							  <option value="17:00">17:00</option>
-							  <option value="18:00">18:00</option>
-							</select>                  		
-						</div>
-						<div class="col-3">
-							<p></p>              		
-						</div>
-                  	</div>
-                  	<div class="row" style="margin-top:10px;">
-                  	<div class="col-2">
-		                  <h5 class="font-gd">돌봄 애완동물</h5>
-		                  </div>
-                  		<div class="col-1" style="margin-left:20px;">
-		                  	 <input class="form-check-input" type="checkbox" name="caredPet" value="강아지">강아지
-		                  	
-						</div>
-						<div class="col-1">
-		                  	 <input class="form-check-input" type="checkbox" name="caredPet" value="고양이">고양이
-		                  	
-						</div>
-						<div class="col-1">
-		                  	 <input class="form-check-input" type="checkbox" name="caredPet" value="새">새
-		                  	
-						</div>
-						<div class="col-1">
-		                  	 <input class="form-check-input" type="checkbox" name="caredPet" value="햄스터">햄스터
-		                  	
-						</div>
-						<div class="col-1">
-		                  	 <input class="form-check-input" type="checkbox" name="caredPet" value="파충류">파충류
-		                  	
-						</div>
-						<div class="col-1">
-		                  	 <input class="form-check-input" type="checkbox" name="caredPet" value="토끼">토끼
-		                  	
-						</div>
-						<div class="col-1">
-		                  	 <input class="form-check-input" type="checkbox" name="caredPet" value="기니피그">기니피그
-		                  	
-						</div>
-						<div class="col-1">
-		                  	 <input class="form-check-input" type="checkbox" name="caredPet" value="고슴도치">고슴도치
-		                  	
-						</div>
-					</div>
-					<div class="row" style="margin-top:10px;">
-					<div class="col-2">
-	                  <h5 class="font-gd">자격증</h5>
-	                  </div>
-                  		<div class="col-3">   
-					   <input type="text" name="licenseNumber" id="licenseNumber" class="form-control" required style="font-family: godik;" placeholder="자격증 이름">
-						</div>
-						<div class="col-3">
-						   <input type="text" name="licenseName" id="licenseName" class="form-control" required style="font-family: godik;" placeholder="자격증 번호">
-						</div>
-					</div>
-					<div class="col-md-11 ml-auto mr-auto text-center" style="margin-top:20px;" >
-                  <button class="btn btn-secondary btn-width" type="submit" >신청</button>
-                   <!--  <button class="btn btn-secondary btn-width" type="submit" onclick="value_check()">검색</button> -->
-                  </div>
-					</form>
-                  </div>
-                </div> 
-              </div>
-              </div>
-                 </div>
-          </div>
+            </div>
+
+		</div>
+		       </div>
+		      
+		</div>
         </div>
        
         </div>
-
 <footer class="footer footer-default" >
   <div class="container">
     <nav class="float-left">
@@ -274,23 +202,6 @@ The above copyright notice and this permission notice shall be included in all c
         }, 1000);
       }
     }
-    
-    $(function(){ 
-    	//$("#pw-check").hide(); 
-    	$("input:radio[name=radio]").click(function(){ 
-    		if($("input[name=radio]:checked").val() == "fullTime"){
-                $("select[name=startTime]").attr("disabled",true);
-                $("select[name=endTime]").attr("disabled",true);
-
-                // radio 버튼의 value 값이 1이라면 활성화
-     
-            }else if($("input[name=radio]:checked").val() == "partTime"){
-                $("select[name=startTime]").attr("disabled",false);
-                $("select[name=endTime]").attr("disabled",false);
-                // radio 버튼의 value 값이 0이라면 비활성화
-            } 
-    		}); 
-    	});
   </script>
 </body>
 

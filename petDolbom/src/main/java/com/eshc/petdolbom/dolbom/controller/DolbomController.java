@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.eshc.petdolbom.dolbom.DolbomTime;
 import com.eshc.petdolbom.dolbom.FullTime;
@@ -64,8 +65,40 @@ public class DolbomController {
 	}
 	@RequestMapping(value = "/dolbomi", method = RequestMethod.GET)
 	public String dolbomiPage(HttpSession session) {
+		if((int)session.getAttribute("memberStatus")==2) {
+			return "/dolbom/dolbomiReceipt";
+		}
+		else if((int)session.getAttribute("memberStatus")==1) {
+			return "/dolbom/warning";
+		}
+		else return "/dolbom/dolbomi";
+	}
+	@RequestMapping(value = "/dolbomi", method = RequestMethod.POST)
+	public String dolbomiApply(HttpServletRequest request,HttpSession session) {
+		String [] caredPets = request.getParameterValues("caredPet");
+		String caredPet = "";
+		String memId = session.getAttribute("memberId").toString();
+		for(int i=0;i<caredPets.length;i++) {
+			caredPet +=caredPets[i];
+			if(i==caredPets.length-1)
+				break;
+			caredPet += ",";
+		}
+		if(request.getParameter("radio").equals("fullTime")) {
+			dolbomService.createFullTime(memId, caredPet);
+			session.setAttribute("memberStatus", 1);
+		}
+		else {
+			dolbomService.createPartTime(memId, caredPet,request.getParameter("startTime"),request.getParameter("endTime"));
+			session.setAttribute("memberStatus", 1);
+		}
+	
+		return "redirect:/dolbom/dolbomi";
+	}
+	@RequestMapping(value = "/dolbomiFinished", method = RequestMethod.GET)
+	public String dolbomiFinishedPage(HttpSession session) {
 		if((int)session.getAttribute("memberStatus")>0) {
-			return "/dolbom/dolbomiManage";
+			return "/dolbom/dolbomiFinished";
 		}
 		else return "/dolbom/dolbomi";
 	}
@@ -122,15 +155,37 @@ public class DolbomController {
 
 		return "";
 	}
-	@RequestMapping(value = "/adminDolbomSearch", method = RequestMethod.GET)
-	public String listSearchDolbomAdmin() {
-
-		return "";
+	@RequestMapping(value = "/adminDolbomAccept", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView dolbomiAccept(String id,HttpServletRequest request) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		
+		dolbomService.updateDolbomiStatus(id, 2);
+		mav.addObject("dolbomiFullList",dolbomService.searchFullDolbomi());
+		mav.addObject("dolbomiPartList",dolbomService.searchPartDolbomi());
+		mav.setView(new RedirectView("/dolbom/adminDolbomSearch",true));
+		System.out.println(id);
+		return mav;
 	}
-	@RequestMapping(value = "/adminDolbomSearch", method = RequestMethod.POST)
-	public String pauseSearchDolbomAdmin() {
-
-		return "";
+	@RequestMapping(value = "/adminDolbomCancel", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView dolbomiCancel(String id,HttpServletRequest request) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		dolbomService.updateDolbomiStatus(id, 0);
+		mav.addObject("dolbomiFullList",dolbomService.searchFullDolbomi());
+		mav.addObject("dolbomiPartList",dolbomService.searchPartDolbomi());
+		mav.setView(new RedirectView("/dolbom/adminDolbomSearch",true));
+		return mav;
+	}
+	
+	
+	@RequestMapping(value = "/adminDolbomSearch", method = RequestMethod.GET)
+	public ModelAndView pauseSearchDolbomAdmin() throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("dolbomiFullList",dolbomService.searchFullDolbomi());
+		mav.addObject("dolbomiPartList",dolbomService.searchPartDolbomi());
+		mav.setViewName("/dolbom/adminDolbomSearch");
+		return mav;
 	}
 	@RequestMapping(value = "/adminDolbomAdd", method = RequestMethod.GET)
 	public String formAddDolbomAdmin() {

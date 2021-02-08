@@ -22,7 +22,7 @@ The above copyright notice and this permission notice shall be included in all c
   <link rel="icon" type="image/png" href="${cp}/resources/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Kit by Creative Tim
+    애완동물 돌봄 서비스
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -54,7 +54,7 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="row">
           <div class="col-lg-4 col-md-6 mx-auto">
             <div class="card card-login">
-              <form class="form">
+              <form class="form" action="${cp}/member/adminLogin" method="post">
                 <div class="card-header card-header-primary text-center">
                   <h4 class="card-title" style="font-family: godik;">애완동물 돌봄 서비스</h4>
                 </div>
@@ -65,7 +65,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <i class="material-icons">face</i>
                       </span>
                     </div>
-                    <input type="text" class="form-control" style="font-family: godik;" placeholder="아이디">
+                    <input type="text" name="id" class="form-control" style="font-family: godik;" placeholder="관리자 아이디">
                   </div>
                   <!-- <div class="input-group">
                     <div class="input-group-prepend">
@@ -81,7 +81,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <i class="material-icons">lock_outline</i>
                       </span>
                     </div>
-                    <input type="password" class="form-control"  style="font-family: godik;" placeholder="패스워드" autocomplete="">
+                    <input type="password" name="password" class="form-control"  style="font-family: godik;" placeholder="관리자 비밀번호" autocomplete="">
                   </div>
                 </div>
                 <!-- <div class="footer text-center">
@@ -91,7 +91,8 @@ The above copyright notice and this permission notice shall be included in all c
                 <button class="btn btn-primary" type="submit" style="font-family: godik;">로그인</button>
                 </div>
                 <div class="footer text-center" style="margin-top: 20px;">
-                <p>관리자 전용 로그인페이지입니다. 일반 사용자는 로그인 할 수 없습니다.</p>
+                <p>관리자 전용 로그인페이지입니다.</p>
+                <p>일반 사용자는 로그인 할 수 없습니다.</p>
                 </div>
               </form>
             </div>

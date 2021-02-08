@@ -3,18 +3,19 @@ package com.eshc.petdolbom.dolbom.service;
 import java.util.List;
 
 import com.eshc.petdolbom.dolbom.DolbomTime;
+import com.eshc.petdolbom.dolbom.DolbomiApplyVO;
 import com.eshc.petdolbom.dolbom.FullTime;
 import com.eshc.petdolbom.dolbom.FullTimeReservation;
 import com.eshc.petdolbom.dolbom.PartTime;
 import com.eshc.petdolbom.dolbom.PartTimeReservation;
 
 public interface DolbomService {
-	void createFullTime(FullTime fullTime);
+	void createFullTime(String memId,String caredPet);
 	FullTime getFullTime(FullTime fullTime);
 	FullTime updateFullTime(FullTime fullTime);
 	int deleteFullTime(FullTime fullTime);
 	
-	void createPartTime(PartTime partTime);
+	void createPartTime(String memId,String caredPet,String startTime,String endTime);
 	PartTime getPartTime(PartTime partTime);
 	PartTime updatePartTime(PartTime partTime);
 	int deletePartTime(PartTime partTime);
@@ -37,4 +38,8 @@ public interface DolbomService {
 	public List<PartTime> searchRegionPartTime() throws Exception;
 	public List<DolbomTime> searchDolbomTime() throws Exception;
 	public List<DolbomTime> searchRegionDolbomTime(String [] regions) throws Exception;
+	public List<DolbomiApplyVO> searchFullDolbomi() throws Exception;
+	public List<DolbomiApplyVO> searchPartDolbomi() throws Exception;
+	public void updateDolbomiStatus(String memId,int status) throws Exception;
+	
 }

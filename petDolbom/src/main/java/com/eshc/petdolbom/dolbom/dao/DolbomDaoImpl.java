@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.eshc.petdolbom.dolbom.DolbomiApplyVO;
 import com.eshc.petdolbom.dolbom.FullTime;
 import com.eshc.petdolbom.dolbom.FullTimeReservation;
 import com.eshc.petdolbom.dolbom.FullTimeVO;
@@ -23,7 +24,27 @@ public class DolbomDaoImpl implements DolbomDao{
     
     private static final String Namespace = "com.eshc.mapper.dolbomMapper";
 	    
-	
+
+	@Override
+	public void updateDolbomiStatus(String memId, int status) throws Exception {
+		Map<String, Object> parameters2 = new HashMap<String, Object>();
+		parameters2.put("dolbomi_status", status);
+		parameters2.put("member_id", memId);
+		sqlSession.update("updateDolbomiStatus",parameters2);
+		
+	}
+
+	@Override
+	public List<DolbomiApplyVO> searchFullDolbomi() throws Exception {
+		return sqlSession.selectList(Namespace+".selectFullDolbomi");
+	}
+
+	@Override
+	public List<DolbomiApplyVO> searchPartDolbomi() throws Exception {
+		return sqlSession.selectList(Namespace+".selectPartDolbomi");
+
+	}
+
 	@Override
 	public FullTimeVO searchFullTimeById(String id) throws Exception {
 		return sqlSession.selectOne(Namespace+".selectFullTimeDolbomById",id);
@@ -50,6 +71,7 @@ public class DolbomDaoImpl implements DolbomDao{
 		parameters.put("address", address);
 
 		return sqlSession.selectList(Namespace+".selectRegionPartTimeDolbom",parameters);
+		
 	}
 
 	@Override
@@ -64,9 +86,16 @@ public class DolbomDaoImpl implements DolbomDao{
 	}
 
 	@Override
-	public int insertFullTime(FullTime fullTime) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void insertFullTime(String memId,String caredPet) {
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		Map<String, Object> parameters2 = new HashMap<String, Object>();
+		parameters.put("member_id", memId);
+		parameters.put("cared_pet", caredPet);
+		parameters.put("full_service_status", 1);
+		sqlSession.insert(Namespace+".insertDolbomiFull",parameters);
+		parameters2.put("dolbomi_status", 1);
+		parameters2.put("member_id", memId);
+		sqlSession.update("updateDolbomiStatus",parameters2);
 	}
 
 	@Override
@@ -88,9 +117,18 @@ public class DolbomDaoImpl implements DolbomDao{
 	}
 
 	@Override
-	public int insertPartTime(PartTime partTime) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void insertPartTime(String memId,String caredPet,String startTime,String endTime) {
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		Map<String, Object> parameters2 = new HashMap<String, Object>();
+		parameters.put("member_id", memId);
+		parameters.put("cared_pet", caredPet);
+		parameters.put("start_time", startTime);
+		parameters.put("end_time", endTime);
+		parameters.put("part_service_status", 1);
+		sqlSession.insert(Namespace+".insertDolbomiPart",parameters);
+		parameters2.put("dolbomi_status", 1);
+		parameters2.put("member_id", memId);
+		sqlSession.update("updateDolbomiStatus",parameters2);
 	}
 
 	@Override
