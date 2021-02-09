@@ -107,11 +107,18 @@ public class DolbomController {
 	public ModelAndView applyPage(String id,String status,HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(id+status);
+		String [] dates = {"2021-2-10"};
+		if(id.equals(session.getAttribute("memberId").toString())) {
+			mav.setViewName("redirect:/dolbom/search");
+			return mav;
+		}
 		if(status.equals("½Ã°£Á¦")) {
 			mav.setViewName("dolbom/partApply");
 			mav.addObject("partTime",dolbomService.searchPartTimeById(id));
 			mav.addObject("pets",dolbomService.searchPartTimeById(id).getDolbomTimeCaredPet().toString().replace("[", "").replace("]",""));
 			mav.addObject("member",memberService.getInfo(session));
+			mav.addObject("myPets",memberService.selectPets(session.getAttribute("memberId").toString()));
+			mav.addObject("disableDate",dates );
 			return mav;
 		}
 		else {
@@ -119,16 +126,18 @@ public class DolbomController {
 			mav.addObject("fullTime",dolbomService.searchFullTimeById(id));
 			mav.addObject("pets",dolbomService.searchFullTimeById(id).getDolbomTimeCaredPet().toString().replace("[", "").replace("]",""));
 			mav.addObject("member",memberService.getInfo(session));
+			mav.addObject("myPets",memberService.selectPets(session.getAttribute("memberId").toString()));
+			mav.addObject("disableDate",dates );
 			return mav;
 		}
 		//System.out.println(id+status);
 		//mav.addObject("dolbomi", )
 		
 	}
-	@RequestMapping(value = "/detail", method = RequestMethod.POST)
-	public String applyDolbom() {
-
-		return "";
+	@RequestMapping(value = "/apply", method = RequestMethod.POST)
+	public String applyDolbom(HttpServletRequest request) {
+		System.out.println(request.getParameter("date")+request.getParameter("myPet"));
+		return "redirect:/dolbom/search";
 	}
 	@RequestMapping(value = "/date", method = RequestMethod.GET)
 	public String selectDate() {

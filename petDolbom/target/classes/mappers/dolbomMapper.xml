@@ -73,5 +73,13 @@ WHERE m.id = #{id}
     from member as m join service_part_time as p on m.id = p.member_id
     where m.dolbomi_status = 1
     </select>
+    <insert id="insertFullDolbomReserv">
+    insert into full_service_reservation(full_service_idx,full_service_date,full_service_applicant_id,full_service_pet_idx,full_service_reservation_status) 
+    	values (#{full_service_idx},#{full_service_date},#{full_service_applicant_id},#{full_service_pet_idx},#{full_service_reservation_status})
+    </insert>  
+    <insert id="insertPartDolbomReserv">
+    insert into part_service_reservation(part_service_idx,part_service_date,part_service_applicant_id,part_service_pet_idx,part_service_reservation_status) 
+    	values (#{part_service_idx},#{part_service_date},#{part_service_applicant_id},#{part_service_pet_idx},#{part_service_reservation_status})
+    </insert>  
 </mapper>
 

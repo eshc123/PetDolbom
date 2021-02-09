@@ -147,6 +147,7 @@ The above copyright notice and this permission notice shall be included in all c
               </div>
               <div class="card card-nav-tabs">
               <div class="card-body ">
+              <form action="${cp}/dolbom/apply" method="post">
               <h3 style="font-weight: bold; margin-top:10px; margin-bottom:20px; margin-left:10px;">신청자 정보</h3>
                   <div class="col-md-11 ml-auto mr-auto">
                     <div class="row">
@@ -184,7 +185,7 @@ The above copyright notice and this permission notice shall be included in all c
 	                  	<p class="font-gd" style="font-size: 20px; font-weight: bold;">날짜 / 시간 선택 : </p>
 	                  	</div>
 	                  	<div class="col-4 has-success" >
-                    		<input type="text" class="form-control datetimepicker" value="2021-02-03" />
+                    		<input type="text" name="date" class="form-control datetimepicker" value="2021-02-03" />
 	                  	</div>
 	                  	
                   	</div>
@@ -194,16 +195,21 @@ The above copyright notice and this permission notice shall be included in all c
 	                  	<p class="font-gd" style="font-size: 20px; font-weight: bold;">애완동물 선택 : </p>
 	                  	</div>
 	                  	<div class="col-4">
-	                  	<select class="form-select" name="petBirth" aria-label="Default select example" style="font-family: godik; font-size:15px;">
+	                  	<select class="form-select" name="myPet" aria-label="Default select example" style="font-family: godik; font-size:15px;">
 						  <option selected>애완동물</option>
-						  <option value="2021">2021</option>
-						  <option value="2020">2020</option>
-						  <option value="2019">2019</option>
+						  <c:forEach items="${myPets}" var="myPets">
+						  <option value="${myPets.pet_name} ">${myPets.pet_name}</option>
+						  </c:forEach>
 						</select> 
 						</div>
                   	</div>
                   	
                   </div>
+                  <div class="col-md-11 ml-auto mr-auto text-center" >
+                  <button class="btn btn-secondary btn-width" type="submit" >신청</button>
+                   <!--  <button class="btn btn-secondary btn-width" type="submit" onclick="value_check()">검색</button> -->
+                  </div>
+                  </form>
                 </div>
               </div>
             </div>         
@@ -264,7 +270,15 @@ The above copyright notice and this permission notice shall be included in all c
         }, 1000);
       }
     }
-
+    var today = new Date();
+    var todayDate = today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate();
+    var later = new Date();
+    later.setDate(today.getDate()+30);
+    var laterDate = later.getFullYear()+"-"+(later.getMonth()+1)+"-"+later.getDate();
+    var disabledDate = ${disableDate};
+    <c:forEach items="${disableDate}" var="disableDate">
+	  <option value="${myPets.pet_name} ">${myPets.pet_name}</option>
+	  </c:forEach>
     $('.datetimepicker').datetimepicker({
     	 icons: {
     	        time: "fa fa-clock-o",
@@ -278,7 +292,10 @@ The above copyright notice and this permission notice shall be included in all c
     	        close: 'fa fa-remove'
     	      },
     	 format:'YYYY-MM-DD',
-    	 locale:'ko'
+    	 locale:'ko',
+    	 disabledDates: disabledDate,
+    	 minDate: new Date(todayDate),
+    	  maxDate: new Date(laterDate)
     });
   </script>
 </body>
