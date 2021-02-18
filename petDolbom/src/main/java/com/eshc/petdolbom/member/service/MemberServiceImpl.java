@@ -44,6 +44,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public boolean loginMember(Member member,HttpSession session) throws Exception  {
+		try {
 		boolean result =memberDao.selectMemberById(member.getId()).getPassword().equals(member.getPassword());
 		if(memberDao.selectMemberById(member.getId()).getPassword().equals(member.getPassword())){
 			Member loginMember = memberDao.selectMemberById(member.getId());
@@ -52,6 +53,10 @@ public class MemberServiceImpl implements MemberService{
 			session.setAttribute("memberStatus", loginMember.getDolbomi_status());
 		}
 		return result;
+		}
+		catch(Exception e) {
+			return false;
+		}
 	}
 
 	@Override

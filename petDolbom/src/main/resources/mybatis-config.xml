@@ -9,6 +9,8 @@
             <typeAlias type="com.eshc.petdolbom.dolbom.PartTimeVO" alias="partTimeVO"/>
             <typeAlias type="com.eshc.petdolbom.dolbom.DolbomiApplyVO" alias="dolbomiApplyVO"/>
             <typeAlias type="com.eshc.petdolbom.pet.PetVO" alias="petVO"/>
+            <typeAlias type="com.eshc.petdolbom.dolbom.FullTimeReservationVO" alias="fullTimeReservationVO"/>
+            <typeAlias type="com.eshc.petdolbom.dolbom.PartTimeReservationVO" alias="partTimeReservationVO"/>
 
         </typeAliases>
         

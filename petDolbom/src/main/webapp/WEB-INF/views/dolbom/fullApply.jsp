@@ -97,10 +97,21 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="row">
            <h2 class="font-gd" style="margin-top: 20px;">종일 돌봄 서비스 신청서 작성</h2>
           <div class="col-md-12 ml-auto mr-auto">
+            <form action="${cp}/dolbom/apply" method="post">
             <div class="card card-nav-tabs">
               <div class="card-body">
               	<h3 style="font-weight: bold; margin-top:10px; margin-bottom:20px; margin-left:10px;">봉사자 정보</h3>
                   <div class="col-md-11 ml-auto mr-auto">
+                    <div class="row">
+	                    <div class="col-2">
+	                    <p class="font-gd" style="font-size: 20px; font-weight: bold;">이름 : </p>
+	                  	</div>
+	                  	<div class="col-4">
+	                  	<input type = "text" name="dolbomiId" class="form-control" style="font-family: godik;" readOnly value="${dolbomiId}"/>
+	                  	
+	                  	
+	                  	</div>
+                  	</div>
                     <div class="row">
 	                    <div class="col-2">
 	                    <p class="font-gd" style="font-size: 20px; font-weight: bold;">이름 : </p>
@@ -147,7 +158,7 @@ The above copyright notice and this permission notice shall be included in all c
               </div>
               <div class="card card-nav-tabs">
               <div class="card-body ">
-              <form action="${cp}/dolbom/apply" method="post">
+              
               	<h3 style="font-weight: bold; margin-top:10px; margin-bottom:20px; margin-left:10px;">신청자 정보</h3>
                   <div class="col-md-11 ml-auto mr-auto">
                   
@@ -186,9 +197,10 @@ The above copyright notice and this permission notice shall be included in all c
 	                  	<div class="col-2">
 	                  	<p class="font-gd" style="font-size: 20px; font-weight: bold;">날짜 / 시간 선택 : </p>
 	                  	</div>
-	                  	<div class="col-4">
-	                  	
+	                  	<div class="col-4 has-success" >
+                    		<input type="text" name="date" class="form-control datetimepicker" value="2021-02-03" />
 	                  	</div>
+	                  	
                   	</div>
                   	<div class="row">
                   	
@@ -196,10 +208,10 @@ The above copyright notice and this permission notice shall be included in all c
 	                  	<p class="font-gd" style="font-size: 20px; font-weight: bold;">애완동물 선택 : </p>
 	                  	</div>
 	                  	<div class="col-4">
-	                  	<select class="form-select" name="petBirth" aria-label="Default select example" style="font-family: godik; font-size:15px;">
+	                  	<select class="form-select" name="myPet" aria-label="Default select example" style="font-family: godik; font-size:15px;">
 						  <option selected>애완동물</option>
 						  <c:forEach items="${myPets}" var="myPets">
-						  <option value="${myPets.pet_name} ">${myPets.pet_name}</option>
+						  <option value="${myPets.pet_idx} ">${myPets.pet_name}</option>
 						  </c:forEach>
 						</select> 
 						</div>
@@ -210,10 +222,11 @@ The above copyright notice and this permission notice shall be included in all c
                   <button class="btn btn-secondary btn-width" type="submit" >신청</button>
                    <!--  <button class="btn btn-secondary btn-width" type="submit" onclick="value_check()">검색</button> -->
                   </div>
-                  </form>
+                  
                 </div>
                 
               </div>
+              </form>
             </div>        
           </div>
         </div>
@@ -243,10 +256,10 @@ The above copyright notice and this permission notice shall be included in all c
   </div>
 </footer>
   <!--   Core JS Files   -->
-  <script src="<c:url value="/resources/assets/js/core/jquery.min.js" />" type="text/javascript"></script>
+ <script src="<c:url value="/resources/assets/js/core/jquery.min.js" />" type="text/javascript"></script>
   <script src="<c:url value="/resources/assets/js/core/popper.min.js" />"  type="text/javascript"></script>
   <script src="<c:url value="/resources/assets/js/core/bootstrap-material-design.min.js" />"  type="text/javascript"></script>
-  <script src="<c:url value="/resources/assets/js/plugins/moment.min.js" />" ></script>
+  <script src="<c:url value="/resources/assets/js/plugins/moment-with-locales.min.js" />" ></script>
   <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
   <script src="<c:url value="/resources/assets/js/plugins/bootstrap-datetimepicker.js" />"  type="text/javascript"></script>
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
@@ -276,7 +289,11 @@ The above copyright notice and this permission notice shall be included in all c
     var later = new Date();
     later.setDate(today.getDate()+30);
     var laterDate = later.getFullYear()+"-"+(later.getMonth()+1)+"-"+later.getDate();
-    var disabledDate = ${disableDate};
+    var disabledDate = []
+    <c:forEach items="${disableDate}" var="disable">
+    	disabledDate.push("${disable}")
+	</c:forEach>
+    	console.log(disabledDate)
     $('.datetimepicker').datetimepicker({
     	 icons: {
     	        time: "fa fa-clock-o",

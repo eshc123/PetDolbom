@@ -12,9 +12,10 @@ import org.springframework.stereotype.Repository;
 import com.eshc.petdolbom.dolbom.DolbomiApplyVO;
 import com.eshc.petdolbom.dolbom.FullTime;
 import com.eshc.petdolbom.dolbom.FullTimeReservation;
+import com.eshc.petdolbom.dolbom.FullTimeReservationVO;
 import com.eshc.petdolbom.dolbom.FullTimeVO;
 import com.eshc.petdolbom.dolbom.PartTime;
-import com.eshc.petdolbom.dolbom.PartTimeReservation;
+import com.eshc.petdolbom.dolbom.PartTimeReservationVO;
 import com.eshc.petdolbom.dolbom.PartTimeVO;
 @Repository
 public class DolbomDaoImpl implements DolbomDao{
@@ -24,6 +25,30 @@ public class DolbomDaoImpl implements DolbomDao{
     
     private static final String Namespace = "com.eshc.mapper.dolbomMapper";
 	    
+
+    
+    
+	@Override
+	public List<PartTimeReservationVO> searchPartTimeReservation(String id) throws Exception {
+		return sqlSession.selectList(Namespace+".selectPartDolbomReserv",id);
+	}
+
+	@Override
+	public List<FullTimeReservationVO> searchFullTimeReservation(String id) throws Exception {
+		return sqlSession.selectList(Namespace+".selectFullDolbomReserv",id);
+	}
+
+	@Override
+	public void insertFullTimeReservation(FullTimeReservation fullTimeReservation) throws Exception {
+		sqlSession.insert(Namespace+".insertFullDolbomReserv",fullTimeReservation);
+		
+	}
+
+	@Override
+	public void insertPartTimeReservation(PartTimeReservationVO partTimeReservation) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public void updateDolbomiStatus(String memId, int status) throws Exception {
@@ -35,13 +60,13 @@ public class DolbomDaoImpl implements DolbomDao{
 	}
 
 	@Override
-	public List<DolbomiApplyVO> searchFullDolbomi() throws Exception {
-		return sqlSession.selectList(Namespace+".selectFullDolbomi");
+	public List<DolbomiApplyVO> searchFullDolbomi(int status) throws Exception {
+		return sqlSession.selectList(Namespace+".selectFullDolbomi",status);
 	}
 
 	@Override
-	public List<DolbomiApplyVO> searchPartDolbomi() throws Exception {
-		return sqlSession.selectList(Namespace+".selectPartDolbomi");
+	public List<DolbomiApplyVO> searchPartDolbomi(int status) throws Exception {
+		return sqlSession.selectList(Namespace+".selectPartDolbomi",status);
 
 	}
 
@@ -149,50 +174,42 @@ public class DolbomDaoImpl implements DolbomDao{
 		return 0;
 	}
 
-	@Override
-	public int insertFullTimeReservation(FullTimeReservation fullTimeReservation) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	@Override
-	public FullTimeReservation selectFullTimeReservation(FullTimeReservation fullTimeReservation) {
+	public FullTimeReservationVO selectFullTimeReservation(FullTimeReservationVO fullTimeReservation) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int updateFullTimeReservation(FullTimeReservation fullTimeReservation) {
+	public int updateFullTimeReservation(FullTimeReservationVO fullTimeReservation) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int deleteFullTimeReservation(FullTimeReservation fullTimeReservation) {
+	public int deleteFullTimeReservation(FullTimeReservationVO fullTimeReservation) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
-	public int insertPartTimeReservation(PartTimeReservation partTimeReservation) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	@Override
-	public PartTimeReservation selectPartTimeReservation(PartTimeReservation partTimeReservation) {
+	public PartTimeReservationVO selectPartTimeReservation(PartTimeReservationVO partTimeReservation) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int updatePartTimeReservation(PartTimeReservation partTimeReservation) {
+	public int updatePartTimeReservation(PartTimeReservationVO partTimeReservation) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int deletePartTimeReservation(PartTimeReservation partTimeReservation) {
+	public int deletePartTimeReservation(PartTimeReservationVO partTimeReservation) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

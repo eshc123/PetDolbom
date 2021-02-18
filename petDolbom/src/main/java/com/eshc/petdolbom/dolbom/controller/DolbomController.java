@@ -1,5 +1,6 @@
 package com.eshc.petdolbom.dolbom.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,9 +19,12 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.eshc.petdolbom.dolbom.DolbomTime;
 import com.eshc.petdolbom.dolbom.FullTime;
+import com.eshc.petdolbom.dolbom.FullTimeReservation;
+import com.eshc.petdolbom.dolbom.FullTimeReservationVO;
 import com.eshc.petdolbom.dolbom.service.DolbomService;
 import com.eshc.petdolbom.member.Member;
 import com.eshc.petdolbom.member.service.MemberService;
+import com.eshc.petdolbom.reservation.Reservation;
 
 @Controller
 @RequestMapping("/dolbom")
@@ -106,24 +110,38 @@ public class DolbomController {
 	@ResponseBody
 	public ModelAndView applyPage(String id,String status,HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		System.out.println(id+status);
-		String [] dates = {"2021-2-10"};
+
 		if(id.equals(session.getAttribute("memberId").toString())) {
 			mav.setViewName("redirect:/dolbom/search");
 			return mav;
 		}
 		if(status.equals("½Ã°£Á¦")) {
+			List<Reservation> reservations = dolbomService.searchPartReservation(id);
+			List<String> dates = new ArrayList<String>();
+
+			for(int i=0;i<reservations.size();i++) {
+				dates.add(reservations.get(i).getDate());
+			}
 			mav.setViewName("dolbom/partApply");
 			mav.addObject("partTime",dolbomService.searchPartTimeById(id));
+			mav.addObject("dolbomiId",id);
 			mav.addObject("pets",dolbomService.searchPartTimeById(id).getDolbomTimeCaredPet().toString().replace("[", "").replace("]",""));
 			mav.addObject("member",memberService.getInfo(session));
 			mav.addObject("myPets",memberService.selectPets(session.getAttribute("memberId").toString()));
 			mav.addObject("disableDate",dates );
+			
 			return mav;
 		}
 		else {
+			List<Reservation> reservations = dolbomService.searchFullReservation(id);
+			List<String> dates = new ArrayList<String>();
+
+			for(int i=0;i<reservations.size();i++) {
+				dates.add(reservations.get(i).getDate());
+			}
 			mav.setViewName("dolbom/fullApply");
 			mav.addObject("fullTime",dolbomService.searchFullTimeById(id));
+			mav.addObject("dolbomiId",id);
 			mav.addObject("pets",dolbomService.searchFullTimeById(id).getDolbomTimeCaredPet().toString().replace("[", "").replace("]",""));
 			mav.addObject("member",memberService.getInfo(session));
 			mav.addObject("myPets",memberService.selectPets(session.getAttribute("memberId").toString()));
@@ -135,9 +153,16 @@ public class DolbomController {
 		
 	}
 	@RequestMapping(value = "/apply", method = RequestMethod.POST)
-	public String applyDolbom(HttpServletRequest request) {
-		System.out.println(request.getParameter("date")+request.getParameter("myPet"));
-		return "redirect:/dolbom/search";
+	public String applyDolbom(HttpServletRequest request,HttpSession session) throws Exception{
+		
+		String pet = request.getParameter("myPet").replace(" ", "");
+		int petIdx = Integer.parseInt(pet);
+		FullTimeReservation fullTimeReservation = 
+				new FullTimeReservation(dolbomService.searchFullTimeById(request.getParameter("dolbomiId").toString()).getDolbomTimeIdx(),request.getParameter("date").toString(),
+				session.getAttribute("memberId").toString(),petIdx,1);
+		
+		dolbomService.createFullTimeReservation(fullTimeReservation);
+		return "redirect:/dolbom/search"+request.getParameter("dolbomiId").toString();
 	}
 	@RequestMapping(value = "/date", method = RequestMethod.GET)
 	public String selectDate() {
@@ -149,30 +174,17 @@ public class DolbomController {
 
 		return "";
 	}
-	@RequestMapping(value = "/adminDolbomApply", method = RequestMethod.GET)
-	public String FormApplyDolbomAdmin() {
+	
 
-		return "";
-	}
-	@RequestMapping(value = "/adminDolbomApply", method = RequestMethod.POST)
-	public String acceptApplyDolbomAdmin() {
-
-		return "";
-	}
-	@RequestMapping(value = "/adminDolbomApply", method = RequestMethod.PUT)
-	public String cancelApplyDolbomAdmin() {
-
-		return "";
-	}
 	@RequestMapping(value = "/adminDolbomAccept", method = RequestMethod.GET)
 	@ResponseBody
 	public ModelAndView dolbomiAccept(String id,HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		
 		dolbomService.updateDolbomiStatus(id, 2);
-		mav.addObject("dolbomiFullList",dolbomService.searchFullDolbomi());
-		mav.addObject("dolbomiPartList",dolbomService.searchPartDolbomi());
-		mav.setView(new RedirectView("/dolbom/adminDolbomSearch",true));
+		mav.addObject("dolbomiFullList",dolbomService.searchFullDolbomi(1));
+		mav.addObject("dolbomiPartList",dolbomService.searchPartDolbomi(1));
+		mav.setView(new RedirectView("/dolbom/adminDolbomApply",true));
 		System.out.println(id);
 		return mav;
 	}
@@ -181,18 +193,35 @@ public class DolbomController {
 	public ModelAndView dolbomiCancel(String id,HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		dolbomService.updateDolbomiStatus(id, 0);
-		mav.addObject("dolbomiFullList",dolbomService.searchFullDolbomi());
-		mav.addObject("dolbomiPartList",dolbomService.searchPartDolbomi());
+		mav.addObject("dolbomiFullList",dolbomService.searchFullDolbomi(1));
+		mav.addObject("dolbomiPartList",dolbomService.searchPartDolbomi(1));
+		mav.setView(new RedirectView("/dolbom/adminDolbomApply",true));
+		return mav;
+	}
+	@RequestMapping(value = "/adminDolbomStop", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView dolbomiStop(String id,HttpServletRequest request) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		dolbomService.updateDolbomiStatus(id, 0);
+		mav.addObject("dolbomiFullList",dolbomService.searchFullDolbomi(1));
+		mav.addObject("dolbomiPartList",dolbomService.searchPartDolbomi(1));
 		mav.setView(new RedirectView("/dolbom/adminDolbomSearch",true));
 		return mav;
 	}
 	
-	
-	@RequestMapping(value = "/adminDolbomSearch", method = RequestMethod.GET)
-	public ModelAndView pauseSearchDolbomAdmin() throws Exception {
+	@RequestMapping(value = "/adminDolbomApply", method = RequestMethod.GET)
+	public ModelAndView listApplyDolbomAdmin() throws Exception {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("dolbomiFullList",dolbomService.searchFullDolbomi());
-		mav.addObject("dolbomiPartList",dolbomService.searchPartDolbomi());
+		mav.addObject("dolbomiFullList",dolbomService.searchFullDolbomi(1));
+		mav.addObject("dolbomiPartList",dolbomService.searchPartDolbomi(1));
+		mav.setViewName("/dolbom/adminDolbomApply");
+		return mav;
+	}
+	@RequestMapping(value = "/adminDolbomSearch", method = RequestMethod.GET)
+	public ModelAndView searchDolbomAdmin() throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("dolbomiFullList",dolbomService.searchFullDolbomi(2));
+		mav.addObject("dolbomiPartList",dolbomService.searchPartDolbomi(2));
 		mav.setViewName("/dolbom/adminDolbomSearch");
 		return mav;
 	}

@@ -247,38 +247,23 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="modal-body">
          <div id='wrap'>
 
-    <div id='external-events'>
-      <h4>Draggable Events</h4>
+   		<table class="table">
+		 <thead>
+		    <tr>
+		      <th scope="col">이름</th>
+		      <th scope="col">지역</th>
+		      <th scope="col">분류</th>
+		      <th scope="col">애완동물</th>
+		      <th scope="col">자격증</th>
+		      <th scope="col">승인</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  
+		  </tbody>
+		</table>
 
-      <div id='external-events-list'>
-        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-          <div class='fc-event-main'>My Event 1</div>
-        </div>
-        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-          <div class='fc-event-main'>My Event 2</div>
-        </div>
-        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-          <div class='fc-event-main'>My Event 3</div>
-        </div>
-        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-          <div class='fc-event-main'>My Event 4</div>
-        </div>
-        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-          <div class='fc-event-main'>My Event 5</div>
-        </div>
-      </div>
 
-      <p>
-        <input type='checkbox' id='drop-remove' />
-        <label for='drop-remove'>remove after drop</label>
-      </p>
-    </div>
-
-    <div id='calendar-wrap'>
-      <div id='calendar'></div>
-    </div>
-
-  </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-link">Nice Button</button>
@@ -287,7 +272,7 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
     </div>
   </div>
-
+  </div>
   <!--   Core JS Files   -->
   <script src="<c:url value="/resources/assets/js/core/jquery.min.js" />" type="text/javascript"></script>
   <script src="<c:url value="/resources/assets/js/core/popper.min.js" />"  type="text/javascript"></script>
@@ -368,13 +353,13 @@ $(document).ready(function(){
     })
     
     
-    
+ /*    
   document.addEventListener('DOMContentLoaded', function() {
 
     /* initialize the external events
     -----------------------------------------------------------------*/
 
-    var containerEl = document.getElementById('external-events-list');
+    /* var containerEl = document.getElementById('external-events-list');
     new FullCalendar.Draggable(containerEl, {
       itemSelector: '.fc-event',
       eventData: function(eventEl) {
@@ -382,7 +367,7 @@ $(document).ready(function(){
           title: eventEl.innerText.trim()
         }
       }
-    });
+    });  */
 
     //// the individual way to do it
     // var containerEl = document.getElementById('external-events-list');
@@ -400,7 +385,7 @@ $(document).ready(function(){
     /* initialize the calendar
     -----------------------------------------------------------------*/
 
-    var calendarEl = document.getElementById('calendar');
+/*     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
       headerToolbar: {
         left: 'prev,next today',
@@ -419,7 +404,7 @@ $(document).ready(function(){
     });
     calendar.render();
 
-  });
+  }); */
 
     
   </script>

@@ -23,6 +23,21 @@
 	
 	<context:component-scan base-package="com.eshc.petdolbom" />
 	
-	
+	<interceptors>
+		<interceptor>
+			<mapping path="/**/"/>
+			<exclude-mapping path="/resources/**"/>
+			<exclude-mapping path="/"/>
+			<exclude-mapping path="/member/register"/>
+			<exclude-mapping path="/member/login"/>
+			<exclude-mapping path="/member/adminLogin"/>
+			<exclude-mapping path="/dolbom/adminDolbomSearch"/>
+			<exclude-mapping path="/dolbom/adminDolbomAccept"/>
+			<exclude-mapping path="/dolbom/adminDolbomCancel"/>
+			<exclude-mapping path="/dolbom/adminDolbomApply"/>
+			<exclude-mapping path="/dolbom/adminDolbomStop"/>
+			<beans:bean class = "com.eshc.petdolbom.member.MemberLoginInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

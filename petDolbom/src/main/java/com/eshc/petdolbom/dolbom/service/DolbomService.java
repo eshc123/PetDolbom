@@ -6,8 +6,10 @@ import com.eshc.petdolbom.dolbom.DolbomTime;
 import com.eshc.petdolbom.dolbom.DolbomiApplyVO;
 import com.eshc.petdolbom.dolbom.FullTime;
 import com.eshc.petdolbom.dolbom.FullTimeReservation;
+import com.eshc.petdolbom.dolbom.FullTimeReservationVO;
 import com.eshc.petdolbom.dolbom.PartTime;
-import com.eshc.petdolbom.dolbom.PartTimeReservation;
+import com.eshc.petdolbom.dolbom.PartTimeReservationVO;
+import com.eshc.petdolbom.reservation.Reservation;
 
 public interface DolbomService {
 	void createFullTime(String memId,String caredPet);
@@ -20,15 +22,15 @@ public interface DolbomService {
 	PartTime updatePartTime(PartTime partTime);
 	int deletePartTime(PartTime partTime);
 	
-	void createFullTimeReservation(FullTimeReservation fullTimeReservation);
-	FullTimeReservation getFullTimeReservation(FullTimeReservation fullTimeReservation);
-	FullTimeReservation updateFullTimeReservation(FullTimeReservation fullTimeReservation);
-	int deleteFullTimeReservation(FullTimeReservation fullTimeReservation);
+	void createFullTimeReservation(FullTimeReservation fullTimeReservation) throws Exception;
+	FullTimeReservationVO getFullTimeReservation(FullTimeReservationVO fullTimeReservation);
+	FullTimeReservationVO updateFullTimeReservation(FullTimeReservationVO fullTimeReservation);
+	int deleteFullTimeReservation(FullTimeReservationVO fullTimeReservation);
 	
-	void createPartTimeReservation(PartTimeReservation partTimeReservation);
-	PartTimeReservation getPartTimeReservation(PartTimeReservation partTimeReservation);
-	PartTimeReservation updatePartTimeReservation(PartTimeReservation partTimeReservation);
-	int deletePartTimeReservation(PartTimeReservation partTimeReservation);
+	void createPartTimeReservation(PartTimeReservationVO partTimeReservation) throws Exception;
+	PartTimeReservationVO getPartTimeReservation(PartTimeReservationVO partTimeReservation);
+	PartTimeReservationVO updatePartTimeReservation(PartTimeReservationVO partTimeReservation);
+	int deletePartTimeReservation(PartTimeReservationVO partTimeReservation);
 	
 	public List<FullTime> searchFullTime() throws Exception;
 	public List<PartTime> searchPartTime() throws Exception;
@@ -38,8 +40,11 @@ public interface DolbomService {
 	public List<PartTime> searchRegionPartTime() throws Exception;
 	public List<DolbomTime> searchDolbomTime() throws Exception;
 	public List<DolbomTime> searchRegionDolbomTime(String [] regions) throws Exception;
-	public List<DolbomiApplyVO> searchFullDolbomi() throws Exception;
-	public List<DolbomiApplyVO> searchPartDolbomi() throws Exception;
+	public List<DolbomiApplyVO> searchFullDolbomi(int status) throws Exception;
+	public List<DolbomiApplyVO> searchPartDolbomi(int status) throws Exception;
 	public void updateDolbomiStatus(String memId,int status) throws Exception;
+	
+	public List<Reservation> searchFullReservation(String id) throws Exception;
+	public List<Reservation> searchPartReservation(String id) throws Exception;
 	
 }

@@ -98,11 +98,11 @@ The above copyright notice and this permission notice shall be included in all c
          <ul class="navbar-nav ml-auto">
           <li class="dropdown nav-item">
             <a href="#" class="dropdown-toggle nav-link font-gd" data-toggle="dropdown" style="font-size:20px; color:#000000;font-weight: bold;">
-              	돌보미 신규 신청
+              	돌보미 조회
             </a>
             <div class="dropdown-menu dropdown-with-icons">
-              <a href="${cp}/dolbom/dolbomiFinished" class="dropdown-item font-gd">
-                 돌보미 조회
+              <a href="${cp}/dolbom/adminDolbomApply" class="dropdown-item font-gd">
+                 돌보미 신규 신청
               </a>
             <a href="${cp}/dolbom/dolbomiFinished" class="dropdown-item font-gd">
                  돌보미 추가
@@ -133,9 +133,8 @@ The above copyright notice and this permission notice shall be included in all c
 		      <td style="vertical-align:middle">종일</td>
 		      <td style="vertical-align:middle">${dolbomiList.cared_pet}</td>
 		      <td style="vertical-align:middle">${dolbomiList.license}</td>
-		      <td>
-		      <a href="${cp}/dolbom/adminDolbomAccept?id=${dolbomiList.id}"><button class="btn btn-success">승인</button></a> 
-		      <a href="${cp}/dolbom/adminDolbomCancel?id=${dolbomiList.id}"><button class="btn btn-danger">취소</button></a>
+		      <td> 
+		      <a href="${cp}/dolbom/adminDolbomStop?id=${dolbomiList.id}"><button class="btn btn-danger">중지</button></a>
 		      </td>
 		    </tr>
 		    </c:forEach>
@@ -147,8 +146,7 @@ The above copyright notice and this permission notice shall be included in all c
 		      <td style="vertical-align:middle">${dolbomiList.cared_pet}</td>
 		      <td style="vertical-align:middle">${dolbomiList.license}</td>
 		      <td>
-		      <a href="${cp}/dolbom/adminDolbomAccept?id=${dolbomiList.id}"><button class="btn btn-success">승인</button></a> 
-		      <a href="${cp}/dolbom/adminDolbomCancel?id=${dolbomiList.id}"><button class="btn btn-danger">취소</button></a>
+		      <a href="${cp}/dolbom/adminDolbomStop?id=${dolbomiList.id}"><button class="btn btn-danger">중지</button></a>
 		      </td>
 		    </tr>
 		    </c:forEach>

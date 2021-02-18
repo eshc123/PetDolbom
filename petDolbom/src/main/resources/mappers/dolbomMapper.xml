@@ -66,12 +66,12 @@ WHERE m.id = #{id}
     <select id="selectFullDolbomi" resultType="dolbomiApplyVO">
     select m.id,m.name, m.address, f.cared_pet,m.license
     from member as m join service_full_time as f on m.id = f.member_id
-    where m.dolbomi_status = 1
+    where m.dolbomi_status = #{status} and f.full_service_status=1
     </select>
     <select id="selectPartDolbomi" resultType="dolbomiApplyVO">
     select m.id, m.name, m.address, p.cared_pet,m.license
     from member as m join service_part_time as p on m.id = p.member_id
-    where m.dolbomi_status = 1
+    where m.dolbomi_status = #{status} and p.part_service_status=1
     </select>
     <insert id="insertFullDolbomReserv">
     insert into full_service_reservation(full_service_idx,full_service_date,full_service_applicant_id,full_service_pet_idx,full_service_reservation_status) 
@@ -80,6 +80,17 @@ WHERE m.id = #{id}
     <insert id="insertPartDolbomReserv">
     insert into part_service_reservation(part_service_idx,part_service_date,part_service_applicant_id,part_service_pet_idx,part_service_reservation_status) 
     	values (#{part_service_idx},#{part_service_date},#{part_service_applicant_id},#{part_service_pet_idx},#{part_service_reservation_status})
-    </insert>  
+    </insert>
+    <select id="selectFullDolbomReserv" resultType="fullTimeReservationVO">
+    select f.full_reservation_idx,f.full_service_idx,f.full_service_date, f.full_service_applicant_id,f.full_service_pet_idx,f.full_service_reservation_status
+    from full_service_reservation as f join service_full_time as s on s.full_service_idx = f.full_service_idx 
+    where s.member_id = #{member_id}
+    </select>  
+    
+    <select id="selectPartDolbomReserv" resultType="partTimeReservationVO">
+    select p.part_reservation_idx,p.part_service_idx,p.part_service_date, p.part_service_applicant_id,p.part_service_pet_idx,p.part_service_reservation_status
+    from part_service_reservation as p join service_part_time as s on s.part_service_idx = p.part_service_idx 
+    where s.member_id = #{member_id}
+    </select>  
 </mapper>
 

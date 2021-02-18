@@ -251,9 +251,9 @@ public class MemberController {
 	public ModelAndView submitAdminLogin(Member member) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		if(member.getId().equals("admin") && member.getPassword().equals("12341234")) {
-			mav.addObject("dolbomiFullList",dolbomService.searchFullDolbomi());
-			mav.addObject("dolbomiPartList",dolbomService.searchPartDolbomi());
-			mav.setViewName("/dolbom/adminDolbomSearch");
+			mav.addObject("dolbomiFullList",dolbomService.searchFullDolbomi(1));
+			mav.addObject("dolbomiPartList",dolbomService.searchPartDolbomi(1));
+			mav.setViewName("/dolbom/adminDolbomApply");
 			return mav;
 		}
 		else {

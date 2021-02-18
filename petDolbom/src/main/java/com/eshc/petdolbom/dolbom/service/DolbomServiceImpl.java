@@ -1,5 +1,6 @@
 package com.eshc.petdolbom.dolbom.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,9 +11,11 @@ import com.eshc.petdolbom.dolbom.DolbomTime;
 import com.eshc.petdolbom.dolbom.DolbomiApplyVO;
 import com.eshc.petdolbom.dolbom.FullTime;
 import com.eshc.petdolbom.dolbom.FullTimeReservation;
+import com.eshc.petdolbom.dolbom.FullTimeReservationVO;
 import com.eshc.petdolbom.dolbom.PartTime;
-import com.eshc.petdolbom.dolbom.PartTimeReservation;
+import com.eshc.petdolbom.dolbom.PartTimeReservationVO;
 import com.eshc.petdolbom.dolbom.dao.DolbomDaoImpl;
+import com.eshc.petdolbom.reservation.Reservation;
 
 @Service
 public class DolbomServiceImpl implements DolbomService{
@@ -20,21 +23,97 @@ public class DolbomServiceImpl implements DolbomService{
 	@Autowired
 	DolbomDaoImpl dolbomDao;
 	
+	
+	
+	@SuppressWarnings("deprecation")
+	@Override
+	public List<Reservation> searchPartReservation(String id) throws Exception {
+		List<PartTimeReservationVO> partReservations = dolbomDao.searchPartTimeReservation(id);
+		List<Reservation> reservations = new ArrayList<Reservation>();
+		for(int i = 0; i<partReservations.size();i++) {
+			Date date = Date.valueOf(partReservations.get(i).getPart_service_date());
+			String day = new String();
+			switch(date.getDay()) {
+			case 0: 
+				day = "일";
+				break;
+			case 1:
+				day = "월";
+				break;
+			case 2:
+				day = "화";
+				break;
+			case 3:
+				day = "수";
+				break;
+			case 4:
+				day = "목";
+				break;
+			case 5:
+				day = "금";
+				break;
+			case 6:
+				day = "토";
+				break;
+			}
+				
+			reservations.add(new Reservation(partReservations.get(i).getPart_service_date(),day,"예약중",partReservations.get(i).getPart_service_applicant_id()));
+		}
+		return reservations;
+	}
+	@SuppressWarnings("deprecation")
+	@Override
+	public List<Reservation> searchFullReservation(String id) throws Exception {
+		List<FullTimeReservationVO> fullReservations = dolbomDao.searchFullTimeReservation(id);
+		List<PartTimeReservationVO> partReservations = dolbomDao.searchPartTimeReservation(id);
+		List<Reservation> reservations = new ArrayList<Reservation>();
+		for(int i = 0; i<fullReservations.size();i++) {
+			Date date = Date.valueOf(fullReservations.get(i).getFull_service_date());
+			String day = new String();
+			switch(date.getDay()) {
+			case 0: 
+				day = "일";
+				break;
+			case 1:
+				day = "월";
+				break;
+			case 2:
+				day = "화";
+				break;
+			case 3:
+				day = "수";
+				break;
+			case 4:
+				day = "목";
+				break;
+			case 5:
+				day = "금";
+				break;
+			case 6:
+				day = "토";
+				break;
+			}
+				
+			reservations.add(new Reservation(fullReservations.get(i).getFull_service_date(),day,"예약중",fullReservations.get(i).getFull_service_applicant_id()));
+		}
+		
+		return reservations;
+	}
 	@Override
 	public void updateDolbomiStatus(String memId,int status) throws Exception {
 		dolbomDao.updateDolbomiStatus(memId, status);
 		
 	}
 	@Override
-	public List<DolbomiApplyVO> searchFullDolbomi() throws Exception {
+	public List<DolbomiApplyVO> searchFullDolbomi(int status) throws Exception {
 		List<DolbomiApplyVO> dolbomiList = new ArrayList<>();
-		dolbomiList.addAll(dolbomDao.searchFullDolbomi());
+		dolbomiList.addAll(dolbomDao.searchFullDolbomi(status));
 		return dolbomiList;
 	}
 	@Override
-	public List<DolbomiApplyVO> searchPartDolbomi() throws Exception {
+	public List<DolbomiApplyVO> searchPartDolbomi(int status) throws Exception {
 		List<DolbomiApplyVO> dolbomiList = new ArrayList<>();
-		dolbomiList.addAll(dolbomDao.searchPartDolbomi());
+		dolbomiList.addAll(dolbomDao.searchPartDolbomi(status));
 		return dolbomiList;
 	}
 	@Override
@@ -224,49 +303,49 @@ public class DolbomServiceImpl implements DolbomService{
 	}
 
 	@Override
-	public void createFullTimeReservation(FullTimeReservation fullTimeReservation) {
-		// TODO Auto-generated method stub
+	public void createFullTimeReservation(FullTimeReservation fullTimeReservation) throws Exception{
+		dolbomDao.insertFullTimeReservation(fullTimeReservation);
 		
 	}
 
 	@Override
-	public FullTimeReservation getFullTimeReservation(FullTimeReservation fullTimeReservation) {
+	public FullTimeReservationVO getFullTimeReservation(FullTimeReservationVO fullTimeReservation) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public FullTimeReservation updateFullTimeReservation(FullTimeReservation fullTimeReservation) {
+	public FullTimeReservationVO updateFullTimeReservation(FullTimeReservationVO fullTimeReservation) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int deleteFullTimeReservation(FullTimeReservation fullTimeReservation) {
+	public int deleteFullTimeReservation(FullTimeReservationVO fullTimeReservation) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public void createPartTimeReservation(PartTimeReservation partTimeReservation) {
+	public void createPartTimeReservation(PartTimeReservationVO partTimeReservation)  throws Exception{
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public PartTimeReservation getPartTimeReservation(PartTimeReservation partTimeReservation) {
+	public PartTimeReservationVO getPartTimeReservation(PartTimeReservationVO partTimeReservation) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public PartTimeReservation updatePartTimeReservation(PartTimeReservation partTimeReservation) {
+	public PartTimeReservationVO updatePartTimeReservation(PartTimeReservationVO partTimeReservation) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int deletePartTimeReservation(PartTimeReservation partTimeReservation) {
+	public int deletePartTimeReservation(PartTimeReservationVO partTimeReservation) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
